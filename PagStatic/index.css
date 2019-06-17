@@ -1,0 +1,47 @@
+/*Menu*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: #4a4af7;
+    font-family: Arial;
+}
+
+img#logo{
+    width: 200px;
+    height: 100px;
+    margin-bottom: 10px;
+    float: left;
+}
+.menu{
+    list-style: none;
+    
+}
+.menu li a{
+    background-color: #a3a3ff;
+    padding: 3px;
+    float: right;
+    text-decoration: none;
+    color: #ffff;
+}
+
+
+
+.menu li ul{
+    position: static;
+    list-style: none;
+    margin: 10px;
+    width: 200px;
+    height: 180px;
+    background-color: #a3a3ff;
+    display: none;
+}
+.menu li:hover ul, .menu.over li ul{display: block;}
+
+
+
