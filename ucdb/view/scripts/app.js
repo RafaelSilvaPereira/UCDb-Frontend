@@ -1,7 +1,6 @@
 import {get_html_to_other_dom, other_dom} from "./get_other_html.js";
 import {UserModel} from "../../model/user.js";
 
-"../../model/user.js"
 /* cuida da parte do header do aplicação: main e nav-bar */
 
 let applicationHeader = {_loginButton : null, _registerButton : null, _searchBar:null};
@@ -26,7 +25,12 @@ async function initialize() { /*apenas atribuindo os valores para os elementos q
     applicationHeader._loginButton = other_dom;
 }
 
-/* user login*/
+/*
+* gerando conteudo dinamico
+* user login
+*
+*
+* */
 $userLogin.onclick = () => {
 
     render(applicationHeader._loginButton);
@@ -47,7 +51,10 @@ $userLogin.onclick = () => {
 }
 
 
-
+/**
+ * gerando conteudo dinamicamente
+ * register user
+ */
 $registerUser.onclick = () => {
     render(applicationHeader._registerButton);
     applicationMain = {
