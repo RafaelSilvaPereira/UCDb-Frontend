@@ -39,13 +39,17 @@ $userLogin.onclick = () => {
 
     applicationMain._closeButton.onclick = () => {
         document.getElementById("pop-up-container-id").style.display='none';
-    }
+    };
 
     applicationMain._form.submit.onclick = () => {
-        const response = JSON.stringify(new UserModel("","",applicationMain._form.email.value, applicationMain._form.psw.value))
-        console.log(response);
-    }
-}
+        const requestUser = {
+            email: applicationMain._form.email.value,
+            password: applicationMain._form.psw.value
+        }
+        console.log(JSON.stringify(requestUser));
+        postData("localhost:8080/api/v1/login/",requestUser).then(response => console.log(response)).then(err => console.log(err))
+    };
+};
 
 
 /* Register user */
@@ -58,7 +62,7 @@ $registerUser.onclick = () => {
 
     applicationMain._closeButton.onclick = () => {
         document.getElementById("pop-up-container-id").style.display='none';
-    }
+    };
 
     applicationMain._form.submit.onclick = () => {
         let form = applicationMain._form;
@@ -69,10 +73,10 @@ $registerUser.onclick = () => {
             form.psw.value
         );
         console.log(JSON.stringify(user));
-        postData("localhost:8080/api/v1/users/",user).then(response => console.log(response)).console(err => console.log(err))
+        postData("localhost:8080/api/v1/users/",user).then(response => console.log(response)).then(err => console.log(err))
     }
 
-}
+};
 let a = () => console.log("oi");
 initialize();
 a();

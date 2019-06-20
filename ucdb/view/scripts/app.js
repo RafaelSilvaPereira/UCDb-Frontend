@@ -46,7 +46,7 @@ $userLogin.onclick = () => {
 
     applicationMain._form.submit.onclick = () => {
         const response = JSON.stringify(new UserModel("","",applicationMain._form.email.value, applicationMain._form.psw.value))
-        console.log(response);
+
     }
 }
 
