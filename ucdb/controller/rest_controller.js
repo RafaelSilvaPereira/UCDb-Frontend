@@ -17,17 +17,17 @@ function postData(url, data = {}) {
 
 
 function getData(url,  authorization) {
-    if(authorization != "") {
+    if(authorization !== "") {
         return fetch("http://"+url, {
         method : "GET",
         headers : {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
             "cache-control": "no-cache",
-            "Authorization": authorization
+            "Authorization": `Bearer ${authorization}`
             }
         }).then(response => response.json())
     } else {
-        return fetch("http://"+url, {
+        return fetch("http://"+encodeURI(url), {
         method : "GET",
         headers : {
             'Content-Type': 'application/json',

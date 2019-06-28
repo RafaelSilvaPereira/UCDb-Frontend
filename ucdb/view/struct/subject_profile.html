@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subject Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<!--    <link rel="stylesheet" href="./view/struct/SubjectProfile.css">-->
+    <p id="subject-name"></p>
+    <p id="subject-id"></p>
+    <i  id="dislike" class="fa fa-thumbs-down like-class">10</i>
+    <script>
+
+        document.getElementById("dislike").onclick = () => {
+            document.getElementById("dislike").classList.toggle("fa-thumbs-down");
+            document.getElementById("dislike").classList.add("fa-thumbs-up");
+        }
+    </script>
+</body>
+</html>
