@@ -33,8 +33,8 @@ function createSubjects(local, response) {
     })
 }
 
-function execSearchBySubjectName(applicationHeader) {
-    let searchBarValue = applicationHeader._form.searchBar.value;
+function execSearchBySubjectName(local, applicationHeader, applicationMain) {
+    let searchBarValue = applicationMain._form.searchBar.value;
 
     if (searchBarValue === "") {
         getData("localhost:8080/api/v1/subjects/").then(response => console.log(response));
