@@ -7,7 +7,8 @@ export {search_subject}
 
 
 function execSearchById(local, applicationHeader, applicationMain) {
-    if((!window.localStorage.___access_token___)){
+    const accessToken = window.localStorage.___access_token___;
+    if((!accessToken)){
         alert("sem token");
         loginButton(local,applicationHeader, applicationMain);
     } else {
@@ -15,13 +16,17 @@ function execSearchById(local, applicationHeader, applicationMain) {
         if (!isNumber(searchBarValue)) {
             alert("Pesquise apenas pelo codigo de identificação da disciplina");
         } else {
-            getData(`localhost:8080/api/v1/subjects/id/${searchBarValue}`, window.localStorage.___access_token___).then(response => console.log(response));
+            getData(`localhost:8080/api/v1/subjects/id/${searchBarValue}`, `Bearer ${accessToken}`)
+                .then(response => {
+                    console.log(response.comments);
+                })
+                .catch(err => err);
         }
     }
 }
 
 function createSubjects(local, response) {
-    console.log(response);
+    // console.log(response);
     let $teste = document.getElementById("teste");
     $teste.innerHTML = "";
     response.forEach(subject => {
@@ -54,8 +59,8 @@ function search_subject(local, applicationHeader) {
     };
     applicationMain._form.searchById.onclick = () => {
         execSearchById(local, applicationHeader, applicationMain);
-    }
+    };
     applicationMain._form.searchBySubjectName.onclick = () => {
         execSearchBySubjectName(local, applicationHeader, applicationMain);
-    }
+    };
 }

@@ -32,6 +32,6 @@ $searchSubject.onclick = () => searchButton($main, applicationHeader);
 
 
 window.onbeforeunload = () => {window.localStorage.clear()};
-// window.onclose = () => {window.localStorage.clear()};
+window.onclose = () => {window.localStorage.clear()};
 
 initialize();

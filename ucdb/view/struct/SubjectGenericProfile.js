@@ -15,7 +15,7 @@ class SubjectenericProfile extends HTMLElement{
     }
 
     render() {
-        this.$shadow.innerHTML = `<link rel="stylesheet" href="./view/struct/GenericSubjectProfile.css">
+        this.$shadow.innerHTML = `<link rel="stylesheet" href="./view/struct/SubjectGenericProfile.css">
              <p class="subject-name">${this.name}</p>
              <p class="subject-id">${this.id}</p>`;
 

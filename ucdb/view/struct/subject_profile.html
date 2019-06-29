@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./view/struct/SubjectProfile.css">
+<!--<link rel="stylesheet" href="./view/struct/SubjectProfile.css">-->
 <p id="subject-name">PROJETO DE SOFTWARE</p>
 <p id="subject-id">13</p>
 <button id="like"><i id="ico-like" class="fa fa-thumbs-up">0</i></button>
 <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">0</i></button>
-
+<div id="comments"></div>
 <style>
     .active-like {
         color: dodgerblue;
@@ -14,15 +14,5 @@
         color: indianred;
     }
 </style>
+<script type="module" src="subject_profile_controller.js"></script>
 
-<script>
-    document.getElementById("like").onclick = () => {
-        document.getElementById("like").classList.toggle("active-like");
-        document.getElementById("dislike").classList.toggle("active-dislike");
-    }
-
-    document.getElementById("dislike").onclick = () => {
-        document.getElementById("dislike").classList.toggle("active-dislike");
-        document.getElementById("like").classList.toggle("active-like");
-    }
-</script>

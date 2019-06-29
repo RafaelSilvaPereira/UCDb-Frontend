@@ -8,7 +8,8 @@ function render(local,elementHTMLDescription) {
 }
 function loginButton(local, applicationHeader) {
     render(local,applicationHeader._loginButton);
-    loginFeatures(local,applicationHeader);
+    console.log(applicationHeader);
+    loginFeatures(local, applicationHeader);
 }
 
 function searchButton(local,applicationHeader) {
