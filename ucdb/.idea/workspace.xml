@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31151817-efc4-4119-9e7b-9fd347ba50e1" name="Default Changelist" comment="magical convert string to &quot;valid url&quot;">
-      <change afterPath="$PROJECT_DIR$/view/scripts/renderButtons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/GenericSubjectProfile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/SubjectGenericProfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/SubjectProfile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/login_features.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/login_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/register_features.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/search_features.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/struct/subject_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/rest_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/rest_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/util/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/util/util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/scripts/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/struct/register_button.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/struct/register_button.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/style/pop_up_container_id.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/style/pop_up_container_id.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/style/register_button.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/style/register_button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/style/search_bar.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/style/search_bar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/style/style-index.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/style/style-index.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,73 +22,70 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#83#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/scripts/renderButtons.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/struct/search_features.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/struct/SubjectGenericProfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/view/struct/subject_profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/struct/SubjectProfile.css">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/rest_controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="264">
+                  <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/view/style/style-index.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="218">
+                  <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/view/struct/register_button.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="110">
+                  <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/view/style/pop_up_container_id.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="264">
+                  <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/view/style/register_button.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="264">
+                  <caret line="12" selection-start-line="12" selection-end-line="25" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/view/style/pop_up_container_id.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="154">
+                  <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -156,12 +145,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/view/struct/login_button.html" />
         <option value="$PROJECT_DIR$/view/struct/search_bar.html" />
-        <option value="$PROJECT_DIR$/view/style/search_bar.css" />
         <option value="$PROJECT_DIR$/view/scripts/app.js" />
         <option value="$PROJECT_DIR$/view/script/get_other_html.js" />
         <option value="$PROJECT_DIR$/controller/util/util.js" />
         <option value="$PROJECT_DIR$/model/GenericSubjectProfile.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/model/SubjectGenericProfile.js" />
         <option value="$PROJECT_DIR$/view/struct/login_style.css" />
         <option value="$PROJECT_DIR$/view/struct/SubjectGenericProfile.js" />
@@ -174,13 +161,19 @@
         <option value="$PROJECT_DIR$/view/struct/search_features.js" />
         <option value="$PROJECT_DIR$/view/struct/SubjectProfile.css" />
         <option value="$PROJECT_DIR$/view/struct/subject_profile.html" />
+        <option value="$PROJECT_DIR$/view/style/style-index.css" />
+        <option value="$PROJECT_DIR$/view/style/search_bar.css" />
+        <option value="$PROJECT_DIR$/view/style/register_button.css" />
+        <option value="$PROJECT_DIR$/view/struct/register_button.html" />
+        <option value="$PROJECT_DIR$/view/style/pop_up_container_id.css" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="683" />
-    <option name="width" value="683" />
-    <option name="height" value="768" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -207,6 +200,12 @@
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="struct" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ucdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucdb" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -223,7 +222,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -269,6 +268,8 @@
       <workItem from="1561549776921" duration="5931000" />
       <workItem from="1561676347815" duration="20944000" />
       <workItem from="1561719512195" duration="9741000" />
+      <workItem from="1561734560593" duration="13416000" />
+      <workItem from="1561820237157" duration="5515000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1561057429388</created>
@@ -295,17 +296,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69069000" />
+    <option name="totallyTimeSpent" value="88000000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22541603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21558245" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32943144" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943144" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -364,19 +365,19 @@
           </nodes>
           <notes />
           <edges>
-            <edge source="$PROJECT_DIR$/view/backup/login_button_component/login_button.html" target="$PROJECT_DIR$/view/backup/login_button_component/login_button.js">
+            <edge source="$PROJECT_DIR$/view/backup/register_button_component/register_button.html" target="../style/pop_up_container_id.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/index.html" target="$PROJECT_DIR$/view/_images/logo.png">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;" target="$PROJECT_DIR$/controller/rest_controller.js#postData#0;">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
+            <edge source="$PROJECT_DIR$/view/scripts/app.js#UserModel#78;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/app.js#other_dom#31;" target="$PROJECT_DIR$/view/scripts/get_other_html.js#get_html_to_other_dom#74;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/get_other_html.js#other_dom#4;">
+              <point x="5.57766435020838" y="0.0" />
+              <point x="5.577664350208364" y="0.0" />
             </edge>
             <edge source="$PROJECT_DIR$/view/backup/login_button_component/login_button.html" target="../view/_images/user.png">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;" target="$PROJECT_DIR$/model/user.js#UserModel#0;">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -384,7 +385,7 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/view/backup/register_button_component/register_button.html" target="../style/pop_up_container_id.css">
+            <edge source="$PROJECT_DIR$/index.html" target="$PROJECT_DIR$/view/_images/logo.png">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -396,7 +397,7 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/index.html" target="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;">
+            <edge source="$PROJECT_DIR$/view/backup/login_button_component/login_button.html" target="../style/login_button.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -404,31 +405,31 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/index.html" target="$PROJECT_DIR$/view/style/style-index.css">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
             <edge source="$PROJECT_DIR$/view/backup/login_button_component/login_button.html" target="../style/pop_up_container_id.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="$PROJECT_DIR$/view/scripts/app.js#UserModel#78;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/app.js#other_dom#31;" target="$PROJECT_DIR$/view/scripts/get_other_html.js#get_html_to_other_dom#74;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/get_other_html.js#other_dom#4;">
-              <point x="5.57766435020838" y="0.0" />
-              <point x="5.577664350208364" y="0.0" />
-            </edge>
-            <edge source="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;" target="$PROJECT_DIR$/view/scripts/get_other_html.js#get_html_to_other_dom#74;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/get_other_html.js#other_dom#4;">
-              <point x="-1.6117079751575147" y="4.733117091601855" />
-              <point x="-1.611707975157529" y="4.733117091601855" />
             </edge>
             <edge source="$PROJECT_DIR$/view/struct/register_button.html" target="./view/style/pop_up_container_id.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;" target="$PROJECT_DIR$/model/user.js#UserModel#0;">
+            <edge source="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;" target="$PROJECT_DIR$/view/scripts/get_other_html.js#get_html_to_other_dom#74;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/view/scripts/get_other_html.js#other_dom#4;">
+              <point x="-1.6117079751575147" y="4.733117091601855" />
+              <point x="-1.611707975157529" y="4.733117091601855" />
+            </edge>
+            <edge source="$PROJECT_DIR$/index.html" target="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/view/backup/login_button_component/login_button.html" target="../style/login_button.css">
+            <edge source="$PROJECT_DIR$/view/backup/login_button_component/login_button.html" target="$PROJECT_DIR$/view/backup/login_button_component/login_button.js">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/controller/app.js#UserModel#92;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#get_html_to_other_dom#8;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#other_dom#31;C:/Users/Administrador/UFCG/5P/PSOFT/UCDb/frontend/ucdb/controller/app.js#postData#136;" target="$PROJECT_DIR$/controller/rest_controller.js#postData#0;">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/index.html" target="$PROJECT_DIR$/view/style/style-index.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -444,30 +445,6 @@
           <VISIBILITY>Details</VISIBILITY>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/struct/login_button.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/struct/register_button.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="29" lean-forward="true" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/struct/search_bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="42" selection-start-column="42" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/style/search_bar.css">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/model/user.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -500,16 +477,6 @@
     <entry file="file://$PROJECT_DIR$/view/struct/login_style.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-          <folding>
-            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/struct/login_features.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -529,13 +496,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="339">
           <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="e#0#83#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/scripts/renderButtons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/struct/search_features.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/struct/SubjectGenericProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/struct/SubjectProfile.css">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/rest_controller.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -544,37 +538,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/struct/search_features.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/scripts/renderButtons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/struct/SubjectProfile.css">
+    <entry file="file://$PROJECT_DIR$/view/style/login_button.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/struct/SubjectGenericProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/struct/subject_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+        <state relative-caret-position="22">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/struct/login_button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/struct/search_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="42" selection-start-column="42" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/style/search_bar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/style/register_button.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" selection-start-line="12" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/struct/register_button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/style/pop_up_container_id.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/style/style-index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
         </state>
       </provider>
     </entry>

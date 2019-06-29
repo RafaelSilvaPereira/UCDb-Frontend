@@ -1,0 +1,33 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+/*Botões*/
+button{
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    border: none;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    color: #0a0ae6;
+    margin: 10px;
+}
+
+button:hover, button:active{
+    background-color:#0a0ae6 ;
+    color: #ffffff;
+}
+
+/*Barra de Pesquisa*/
+
+input{
+    border: none;
+    padding: 10px 40px;
+    width: 400px;
+    margin-left: 20px;
+    text-align: center;
+    color: #0a0ae6;
+}

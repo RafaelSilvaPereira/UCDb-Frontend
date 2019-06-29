@@ -1,0 +1,88 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:  #a3a3ff;
+    height: 100%;
+    font-family: 'Oswald', sans-serif;
+}
+
+/*Aparência HEADER*/
+
+header{
+    height: 100px;
+    width: 100%;
+    background-color: #4a4af7;
+    border-bottom: solid 5px #0a0ae6;
+
+}
+
+.container img{
+    width: 200px;
+    height: 100px;
+}
+
+.container li{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#login, #cadastre-se{
+    float: right;
+    margin: 10px;
+}
+#pesquisar-disciplina{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+/*Botões*/
+button{
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+
+.button-header {
+    border: none;
+    padding: 10px 60px;
+    background-color: #ffffff;
+    color: #0a0ae6;
+}
+
+.button-header:hover, .button-header:active{
+    background-color:#0a0ae6 ;
+    color: #ffffff;
+}
+
+#search-subject-id{
+    padding: 0px 20px;
+}
+
+#register-button-id, #login-button-id{
+    padding: 10px 30px;
+}
+
+
+/*Main*/
+
+main{
+    background-color: #4a4af7;
+    width: 80%;
+    height: 90vh;
+    margin: 20px auto;
+}
+
+
+
+/*Rodapé*/
+
+footer{
+    height: 60px;
+    background-color: #4a4af7;
+    width: 100%;
+    border-top: solid 5px #0a0ae6 ;
+}

@@ -13,3 +13,43 @@
     from {transform: scale(0)}
     to {transform: scale(1)}
 }
+
+/*Box */
+.pop-up-content {
+    background-color: #a3a3ff;
+    margin: 15% auto 15% auto;
+    border: 1px solid #888;
+    width: 300px;
+    height: 400px;
+}
+
+
+/* Animação */
+.animate {
+    animation: zoom 0.6s;
+}
+
+/*Button close*/
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/*Form*/
+
+#register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+}
