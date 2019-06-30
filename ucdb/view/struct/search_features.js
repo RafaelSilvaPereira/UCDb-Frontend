@@ -6,7 +6,20 @@ import {SubjectProfile} from "./SubjectProfile.js"
 export {search_subject}
 
 
+function createASubjectProfile(response, isEnjoyed, isDisliked) {
+    let $subjectContent = document.getElementById("$subjectContent");
+    $subjectContent.innerHTML = "";
+    let comments = response.comments;
+    let $subject = new SubjectProfile(comments, isEnjoyed, isDisliked);
 
+
+    $subject.setAttribute("id", response.id);
+    $subject.setAttribute("name", response.name);
+    $subject.setAttribute("likes", response.likes);
+    $subject.setAttribute("dislikes", response.dislikes);
+
+    $subjectContent.appendChild($subject);
+}
 
 function execSearchById(local, applicationHeader, applicationMain) {
     const accessToken = window.localStorage.___access_token___;
@@ -20,25 +33,19 @@ function execSearchById(local, applicationHeader, applicationMain) {
         } else {
             getData(`localhost:8080/api/v1/subjects/id/${searchBarValue}`, `Bearer ${accessToken}`)
                 .then(response => {
-                    let $subjectContent = document.getElementById("$subjectContent");
-                    $subjectContent.innerHTML = "";
-                    let comments = response.comments;
-                    let $subject = new SubjectProfile(comments);
-
-                    $subject.setAttribute("id", response.id);
-                    console.log(response.id, response.name, response.likes, response.dislikes);
-                    $subject.setAttribute("name", response.name);
-                    $subject.setAttribute("likes", response.likes);
-                    $subject.setAttribute("dislikes", response.dislikes);
-
-                    $subjectContent.appendChild($subject);
+                    let subjectId = response.id;
+                    getData("localhost:8080/api/v1/students/enjoyed/"+ subjectId, "Bearer " + window.localStorage.___access_token___).then(isEnjoyed => {
+                        getData("localhost:8080/api/v1/students/disliked/" + subjectId, "Bearer " + window.localStorage.___access_token___).then(isDisliked => {
+                            createASubjectProfile(response, isEnjoyed, isDisliked);
+                        })
+                    })
                 })
                 .catch(err => console.log(err));
         }
     }
 }
 
-function createSubjects(local, response) {
+function createGenericSubjectsProfile(local, response) {
     let $subjectContent = document.getElementById("$subjectContent");
     $subjectContent.innerHTML = "";
     response.forEach(subject => {
@@ -56,9 +63,7 @@ function execSearchBySubjectName(local, applicationHeader, applicationMain) {
         getData("localhost:8080/api/v1/subjects/").then(response => console.log(response));
     } else {
         getData(`localhost:8080/api/v1/subjects/search/${encodeURI(searchBarValue.toUpperCase())}`)
-            .then(response => {
-            createSubjects(document.getElementById("main-container"), response);
-        });
+            .then(response => createGenericSubjectsProfile(document.getElementById("main-container"), response));
     }
 
 }

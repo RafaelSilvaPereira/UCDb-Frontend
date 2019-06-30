@@ -1,12 +1,14 @@
 import {SubjectComment} from "./SubjectComment.js";
-import {giveLike} from "./subject_profile_controller.js";
-export {SubjectProfile}
+import {giveLike, giveDislike} from "./subject_profile_controller.js";
+export {SubjectProfile};
 
 class SubjectProfile extends HTMLElement {
 
-    constructor(comments=[]) {
+    constructor(comments=[], isEnjoyed, isDisliked) {
         super();
         this.comments = comments;
+        this._userEnjoyed = isEnjoyed;
+        this._userDisliked = isDisliked;
     }
 
     connectedCallback() {
@@ -17,21 +19,21 @@ class SubjectProfile extends HTMLElement {
         this.render();
     }
 
-    carregaComentariosAutomaticamente() {
-        const $comments = document.createElement("div");
-        $comments.setAttribute("class", "subjectComments");
-        $comments.innerHTML = "";
+    autoConfigureReplys() {
+        const $replysContainer = document.createElement("div");
+        $replysContainer.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
+        $replysContainer.innerHTML = ""; // limpando o que quer que esteja dentro do html
         this.comments.forEach(c => {
-            let comment = new SubjectComment(this.id, c.subComments, "comment");
+            let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
             comment.setAttribute("commentID", c.commentID);
             comment.setAttribute("studentName", c.studentName);
             comment.setAttribute("studentSecondName",c.studentSecondName);
             comment.setAttribute("comment", c.comment);
             comment.setAttribute("commentDate",c.date);
-            $comments.appendChild(comment);
+            $replysContainer.appendChild(comment);
         });
 
-        return $comments
+        return $replysContainer
     }
 
     render() {
@@ -50,8 +52,14 @@ class SubjectProfile extends HTMLElement {
                     color: indianred;
                 }
             </style>`;
+        if(this._userEnjoyed) {
+            document.getElementById("like").classList.add("active-like");
+        }
 
-        let  subjectComments = this.carregaComentariosAutomaticamente();
+        if(this._userDisliked) {
+            document.getElementById("dislike").classList.add("active-dislike");
+        }
+        let  subjectComments = this.autoConfigureReplys();
         this.appendChild(subjectComments);
 
 
@@ -63,14 +71,15 @@ class SubjectProfile extends HTMLElement {
         const $dislike = document.getElementById("dislike");
         let $likeCount = $like.firstElementChild;
         let $dislikeCount = $dislike.firstElementChild;
-        this.likeFlag = false;
-        this.dislikeFlag = false;
+
+
         $like.onclick = () => {
-            // console.log("funciona");
-            // console.log(this._id, $like, $dislike, $likeCount, $dislikeCount, this.likeFlag, this.dislikeFlag);
-            //subjectID, $like, $dislike, $likeCount, $dislikeCount, likeFlag, dislikeFlag
             giveLike(this._id, $like, $dislike, $likeCount, $dislikeCount, this);
         };
+        $dislike.onclick = () => {
+            giveDislike(this._id, $like, $dislike, $likeCount, $dislikeCount, this);
+        }
+
     }
 }
 

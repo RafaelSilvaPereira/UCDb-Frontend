@@ -1,107 +1,97 @@
 import {postData} from "../../controller/rest_controller.js";
-export {sayHello, giveLike}
-function sayHello() {
-    console.log("hallo") }
-// }
-// const $like = document.getElementById("like");
-// const $dislike = document.getElementById("dislike");
-// const $comments = document.getElementById("comments");
-// let $likeCount = $like.firstElementChild;
-// let $dislikeCount = $dislike.firstElementChild;
-// let likeFlag = false;
-// let dislikeFlag = false;
-const userToken = window.localStorage.___access_token___;
-// const subjectID = document.getElementById("subject-id").textContent;
-//
-// console.log("oooooi");
-//
-//
-function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject={likeFlag:false, dislikeFlag:false}){
+export {giveLike, giveDislike}
 
-
+function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject={_userEnjoyed:false, _userDisliked:false}){
     const userToken = window.localStorage.___access_token___;
     try {
-        if (!subject.likeFlag && !subject.dislikeFlag) { // 0 0
+        if (!subject._userEnjoyed && !subject._userDisliked) { // 0 0
             if (!!userToken) {
 
-                postData(`localhost:8080/api/v1/subjects/like/${subjectID}`, null, `Bearer ${userToken}`);
+                postData(`localhost:8080/api/v1/subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
+                    .catch(err => {throw  new Error()});
 
                 $like.classList.add("active-like");
                 $likeCount.innerText = "" + (parseInt($likeCount.textContent) + 1);
                 $dislikeCount.innerText = "" + $dislikeCount.textContent;
 
-                subject.likeFlag = true;
-                subject.dislikeFlag = false;
+                subject._userEnjoyed = true;
+                subject._userDisliked = false;
             } else {
                 throw new Error("User Token does not exist");
             }
-        } else if (subject.likeFlag && !subject.dislikeFlag) {  // 1 0
+        } else if (subject._userEnjoyed && !subject._userDisliked) {  // 1 0
             if (!!userToken) {
                 $like.classList.remove("active-like");
-                postData(`localhost:8080/api/v1/subjects/unlike/${subjectID}`, null, `Bearer ${userToken}`).catch(err => {throw  new Error()})
+                postData(`localhost:8080/api/v1/subjects/unlike/${subjectID}`, null, `Bearer ${userToken}`)
+                    .catch(err => {throw  new Error()})
                 $likeCount.innerText = "" + (parseInt($likeCount.textContent) - 1);
                 $dislikeCount.innerText = "" + $dislikeCount.textContent;
 
-                subject.likeFlag = false;
-                subject.dislikeFlag = false; //
+                subject._userEnjoyed = false;
+                subject._userDisliked = false; //
             } else {
                 throw new Error("server error!")
             }
-        } else if (!subject.likeFlag && subject.dislikeFlag) { // 0 1
+        } else if (!subject._userEnjoyed && subject._userDisliked) { // 0 1
             if (!!userToken) {
-                postData(`localhost:8080/api/v1/subjects/like/${subjectID}`, null, `Bearer ${userToken}`).catch(err => {throw  new Error()}) // garantido pela api que o like remove o deslike
+                postData(`localhost:8080/api/v1/subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
+                    .catch(err => {throw  new Error()}) // garantido pela api que o like remove o deslike
 
                 $like.classList.add("active-like");
                 $dislike.classList.remove("active-dislike");
                 $likeCount.innerText = "" + (parseInt($likeCount.textContent) + 1);
                 $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) - 1);
-                subject.likeFlag = true;
-                subject.dislikeFlag = false;
+                subject._userEnjoyed = true;
+                subject._userDisliked = false;
             } else {
                 throw  new Error()
             }
         }
     } catch (e) {
         console.log(e);
-        alert("error....");
+        alert("Algo deu errado no sistema, por favor tente outra vez mais tarde!");
     }
 }
-// $dislike.onclick = () => {
-//     try {
-//         if (!subject.likeFlag && !subject.dislikeFlag) { // 0 0
-//             if (!!userToken) {
-//                 postData(`localhost:8080/api/v1/subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`).catch(err => {throw  new Error()})
-//                 $dislike.classList.add("active-dislike");
-//                 $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) + 1);
-//                 dislikeFlag = true;
-//                 $likeCount.innerText = "" + $likeCount.textContent;
-//                 likeFlag = false;
-//             } else {
-//                 throw new Error("server error!");
-//             }
-//
-//         } else if (likeFlag && !dislikeFlag) {  // 1 0
-//             if (!!userToken) {
-//                 postData(`localhost:8080/api/v1/subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`);
-//                 $like.classList.remove("active-like");
-//                 $dislike.classList.add("active-dislike");
-//                 $likeCount.innerText = "" + (parseInt($likeCount.textContent) - 1);
-//                 likeFlag = false;
-//                 $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) + 1);
-//                 dislikeFlag = true;
-//             } else {
-//                 throw new Error();
-//             }
-//         } else if (!likeFlag && dislikeFlag) { // 0 1
-//             postData(`localhost:8080/api/v1/subjects/undislike/${subjectID}`, null, `Bearer ${userToken}`).catch(err => {throw  new Error()})
-//             $dislike.classList.remove("active-dislike");
-//             $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) - 1);
-//             dislikeFlag = false;
-//             $likeCount.innerText = "" + $likeCount.textContent;
-//             likeFlag = false;
-//         }
-//     } catch (e) {
-//         alert("não deu certo....");
-//     }
-// }
-//
+function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject={_userEnjoyed:false, _userDisliked:false}) {
+    const userToken = window.localStorage.___access_token___;
+    try {
+        if (!subject._userEnjoyed && !subject._userDisliked) { // 0 0
+            if (!!userToken) {
+                postData(`localhost:8080/api/v1/subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`)
+                    .catch(err => {throw  new Error()});
+                $dislike.classList.add("active-dislike");
+                $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) + 1);
+                subject._userDisliked = true;
+                $likeCount.innerText = "" + $likeCount.textContent;
+                subject._userEnjoyed = false;
+            } else {
+                throw new Error("server error!");
+            }
+
+        } else if (subject._userEnjoyed && !subject._userDisliked) {  // 1 0
+            if (!!userToken) {
+                postData(`localhost:8080/api/v1/subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`)
+                    .catch(err => {throw  new Error()});
+                $like.classList.remove("active-like");
+                $dislike.classList.add("active-dislike");
+                $likeCount.innerText = "" + (parseInt($likeCount.textContent) - 1);
+                subject._userEnjoyed = false;
+                $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) + 1);
+                subject._userDisliked = true;
+            } else {
+                throw new Error();
+            }
+        } else if (!subject._userEnjoyed && subject._userDisliked) { // 0 1
+            postData(`localhost:8080/api/v1/subjects/undislike/${subjectID}`, null, `Bearer ${userToken}`)
+                .catch(err => {throw  new Error()});
+            $dislike.classList.remove("active-dislike");
+            $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) - 1);
+            subject._userDisliked = false;
+            $likeCount.innerText = "" + $likeCount.textContent;
+            subject._userEnjoyed = false;
+        }
+    } catch (e) {
+        alert("Algo deu errado no sistema, por favor tente outra vez mais tarde!");
+    }
+}
+
