@@ -3,6 +3,7 @@ function initDefine(data, authorization, method) {
     let defautHeader = {'Accept' : '*/*',
         'Content-Type': 'application/json; charset=utf-8', "cache-control": "no-cache",
         "Cache-control": "no-cache","accept-encoding": "gzip, deflate"};
+
     if(!!data) {
         if(!!authorization) { // init com data e autorização
             defautHeader.Authorization = `${authorization}`;
@@ -11,7 +12,7 @@ function initDefine(data, authorization, method) {
                 headers: defautHeader,
                 redirect: 'follow',
                 referrer: 'client',
-                body: JSON.stringify(data),
+                body: JSON.stringify(data)
             }
         } else { // init com data e sem autorização
             init = {
@@ -19,7 +20,7 @@ function initDefine(data, authorization, method) {
                 headers: defautHeader,
                 redirect: 'follow',
                 referrer: 'client',
-                body: JSON.stringify(data),
+                body: JSON.stringify(data)
             }
         }
     } else { // init com nenhuma data e autorização
@@ -29,15 +30,14 @@ function initDefine(data, authorization, method) {
                 method: `${method}`, mode: 'cors', cache: 'no-cache',
                 headers: defautHeader,
                 redirect: 'follow',
-                referrer: 'client',
+                referrer: 'client'
             }
         }else { // sem data e sem autorização
             init = {
                 method: `${method}`, mode: 'cors', cache: 'no-cache',
                 headers: defautHeader,
                 redirect: 'follow',
-                referrer: 'client',
-
+                referrer: 'client'
             }
         }
 

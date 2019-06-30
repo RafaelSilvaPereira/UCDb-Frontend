@@ -4,7 +4,6 @@ class SubjectenericProfile extends HTMLElement{
     constructor() {
         super();
         this.$shadow = this.attachShadow({"mode": "open"});
-        console.log(this.$shadow);
     };
 
 

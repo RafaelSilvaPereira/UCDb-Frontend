@@ -2,7 +2,9 @@ import {isNumber} from "../../controller/util/util.js";
 import {getData} from "../../controller/rest_controller.js";
 import {loginButton} from "../scripts/renderButtons.js";
 import {SubjectenericProfile} from "./SubjectGenericProfile.js";
+import {SubjectProfile} from "./SubjectProfile.js"
 export {search_subject}
+
 
 
 
@@ -18,23 +20,32 @@ function execSearchById(local, applicationHeader, applicationMain) {
         } else {
             getData(`localhost:8080/api/v1/subjects/id/${searchBarValue}`, `Bearer ${accessToken}`)
                 .then(response => {
-                    console.log(response.comments);
+                    let $subjectContent = document.getElementById("$subjectContent");
+                    $subjectContent.innerHTML = "";
+                    let comments = response.comments;
+                    let $subject = new SubjectProfile(comments);
+
+                    $subject.setAttribute("id", response.id);
+                    console.log(response.id, response.name, response.likes, response.dislikes);
+                    $subject.setAttribute("name", response.name);
+                    $subject.setAttribute("likes", response.likes);
+                    $subject.setAttribute("dislikes", response.dislikes);
+
+                    $subjectContent.appendChild($subject);
                 })
-                .catch(err => err);
+                .catch(err => console.log(err));
         }
     }
 }
 
 function createSubjects(local, response) {
-    // console.log(response);
-    let $teste = document.getElementById("teste");
-    $teste.innerHTML = "";
+    let $subjectContent = document.getElementById("$subjectContent");
+    $subjectContent.innerHTML = "";
     response.forEach(subject => {
-        let novo;
-        novo = new SubjectenericProfile();
+        let novo = new SubjectenericProfile();
         novo.setAttribute("name", subject.name);
         novo.setAttribute("id", subject.id);
-        $teste.appendChild(novo);
+        $subjectContent.appendChild(novo);
     })
 }
 
@@ -44,14 +55,13 @@ function execSearchBySubjectName(local, applicationHeader, applicationMain) {
     if (searchBarValue === "") {
         getData("localhost:8080/api/v1/subjects/").then(response => console.log(response));
     } else {
-        getData(`localhost:8080/api/v1/subjects/search/${encodeURI(searchBarValue.toUpperCase())}`).then(response => {
+        getData(`localhost:8080/api/v1/subjects/search/${encodeURI(searchBarValue.toUpperCase())}`)
+            .then(response => {
             createSubjects(document.getElementById("main-container"), response);
         });
     }
 
 }
-
-
 
 function search_subject(local, applicationHeader) {
     let applicationMain = {
