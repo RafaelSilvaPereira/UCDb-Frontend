@@ -20,6 +20,8 @@ function loginFeatures(local,applicationHeader) {
             .then(response => {
                 const tokenValue = response.token;
                 window.localStorage.setItem("___access_token___", tokenValue);
+                window.localStorage.setItem("___user_email___", requestUser.email);
+                window.localStorage.setItem("___user_password___", requestUser.password);
                 setTimeout(() => {
                         alert("seu token ira inspirar em menos de 5 minutos, " +
                             "salve seu progresso que em menos de 5 minutos\nestaremos refazendo o seu login");

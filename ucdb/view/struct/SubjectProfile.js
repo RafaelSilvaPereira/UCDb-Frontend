@@ -1,74 +1,97 @@
 import {SubjectComment} from "./SubjectComment.js";
-import {giveLike, giveDislike} from "./subject_profile_controller.js";
+import {giveLike, giveDislike, sendComment} from "./subject_profile_controller.js";
+// import {getData} from "../../controller/rest_controller.js";
+import {postData} from "../../controller/rest_controller.js";
+
+
 export {SubjectProfile};
 
 class SubjectProfile extends HTMLElement {
 
-    constructor(comments=[], isEnjoyed, isDisliked) {
-        super();
-        this.comments = comments;
-        this._userEnjoyed = isEnjoyed;
-        this._userDisliked = isDisliked;
+constructor(comments=[], isEnjoyed, isDisliked) {
+    super();
+    this._comments = comments;
+    this._userEnjoyed = isEnjoyed;
+    this._userDisliked = isDisliked;
+}
+
+connectedCallback() {
+    this._id = this.getAttribute("id");
+    this._name = this.getAttribute("name");
+    this._likes = this.getAttribute("likes");
+    this._dislikes = this.getAttribute("dislikes");
+    this.render();
+}
+
+render() {
+    const html = `
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <p id="subject-name">${this._name}</p>
+        <p id="subject-id">${this._id}</p>
+        <button id="like"><i id="ico-like" class="fa fa-thumbs-up">${this._likes}</i></button>
+        <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">${this._dislikes}</i></button>
+        <form id="subject-comment">
+            <div id="comment-container">
+                <textarea name="text-comment" id="comment-id" cols="30" rows="10" placeholder="conte para nós o que achou da disciplina"></textarea>
+                <button type="button" name="submit" send-comment class="send-comment-button">ENVIAR!</button>
+            </div>
+        </form>
+        <style>
+            .active-like {
+                color: dodgerblue;
+            }
+
+            .active-dislike {
+                color: indianred;
+            }
+        </style>`;
+
+    this.innerHTML = html;
+    this.setLikeAndDislikeButtonState();
+    this.autoConfigureSubjectComments();
+    this.innerJS();
+}
+
+autoConfigureSubjectComments() {
+    let $subjectsComments = document.getElementById("subjectCommentsID");
+    if(!!$subjectsComments) { // caso já tenha sido settado o filho do no, apenas remova o elemento commenatrio e escreva denovo
+        console.log($subjectsComments);
+       $subjectsComments.parentNode.removeChild($subjectsComments)
     }
 
-    connectedCallback() {
-        this._id = this.getAttribute("id");
-        this._name = this.getAttribute("name");
-        this._likes = this.getAttribute("likes");
-        this._dislikes = this.getAttribute("dislikes");
-        this.render();
+    $subjectsComments = document.createElement("div");
+    $subjectsComments.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
+    $subjectsComments.setAttribute("id", "subjectCommentsID");
+
+    $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
+    this._comments.forEach(c => {
+        let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
+        comment.setAttribute("commentID", c.commentID);
+        comment.setAttribute("studentName", c.studentName);
+        comment.setAttribute("studentSecondName",c.studentSecondName);
+        comment.setAttribute("comment", c.comment);
+        comment.setAttribute("commentDate",c.commentDate);
+        comment.setAttribute("commentHour", c.commentHour)
+        $subjectsComments.appendChild(comment);
+    });
+
+    this.appendChild($subjectsComments);
+}
+
+setLikeAndDislikeButtonState() {
+    if (this._userEnjoyed) {
+        document.getElementById("like").classList.add("active-like");
     }
 
-    autoConfigureReplys() {
-        const $replysContainer = document.createElement("div");
-        $replysContainer.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
-        $replysContainer.innerHTML = ""; // limpando o que quer que esteja dentro do html
-        this.comments.forEach(c => {
-            let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
-            comment.setAttribute("commentID", c.commentID);
-            comment.setAttribute("studentName", c.studentName);
-            comment.setAttribute("studentSecondName",c.studentSecondName);
-            comment.setAttribute("comment", c.comment);
-            comment.setAttribute("commentDate",c.date);
-            $replysContainer.appendChild(comment);
-        });
-
-        return $replysContainer
+    if (this._userDisliked) {
+        document.getElementById("dislike").classList.add("active-dislike");
     }
-
-    render() {
-        this.innerHTML = `
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <p id="subject-name">${this._name}</p>
-            <p id="subject-id">${this._id}</p>
-            <button id="like"><i id="ico-like" class="fa fa-thumbs-up">${this._likes}</i></button>
-            <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">${this._dislikes}</i></button>
-            <style>
-                .active-like {
-                    color: dodgerblue;
-                }
-
-                .active-dislike {
-                    color: indianred;
-                }
-            </style>`;
-        if(this._userEnjoyed) {
-            document.getElementById("like").classList.add("active-like");
-        }
-
-        if(this._userDisliked) {
-            document.getElementById("dislike").classList.add("active-dislike");
-        }
-        let  subjectComments = this.autoConfigureReplys();
-        this.appendChild(subjectComments);
-
-
-        this.innerJS();
-    }
+}
 
     innerJS() {
         const $like = document.getElementById("like");
         const $dislike = document.getElementById("dislike");
+        const $sendComment = document.querySelector("[send-comment]");
         let $likeCount = $like.firstElementChild;
         let $dislikeCount = $dislike.firstElementChild;
 
@@ -78,8 +101,20 @@ class SubjectProfile extends HTMLElement {
         };
         $dislike.onclick = () => {
             giveDislike(this._id, $like, $dislike, $likeCount, $dislikeCount, this);
-        }
+        };
 
+        $sendComment.onclick = () => {
+            const commentText = document.getElementById("comment-id").value;
+            const userToken = window.localStorage.___access_token___;
+            postData("localhost:8080/api/v1/comment/create/" + this._id, {comment: commentText.trim()},
+                `Bearer ${userToken}`)
+                .then(newC => {
+                if(!!newC) {
+                    this._comments.push(newC);
+                    this.autoConfigureSubjectComments();
+                }
+            }).catch(err => alert("algo deu errado"));
+        }
     }
 }
 

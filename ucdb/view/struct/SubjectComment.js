@@ -13,6 +13,7 @@ class SubjectComment extends HTMLElement{
         this.studentSecondName = this.getAttribute("studentSecondName");
         this.comment = this.getAttribute("comment");
         this.date = this.getAttribute("commentDate");
+        this.hour = this.getAttribute("commentHour");
         this.render();
     }
 
@@ -24,9 +25,8 @@ class SubjectComment extends HTMLElement{
         }
     }
     render() {
-        this.innerHTML = `
+        const html = `
             <style>
-                
                 .comment-subject {
                     background-color: red; /*diferencia comentario de respostas*/
                 }
@@ -59,11 +59,14 @@ class SubjectComment extends HTMLElement{
                 <div class="comment-info">
                     <p class="comment-id"><i>id: ${this.commentID}</i></p>
                     <p class="author">escrito por: ${this.studentName} ${this.studentSecondName}</p> 
-                    <p id="date">as: ${this.date}</p>
+                    <p id="date">as: ${this.hour} do dia ${this.date}</p>
                 </div>
                 <p class="comment">${this.comment}</p>
+                
             </div>
         `;
+
+        this.innerHTML = html;
 
         const $subComments = document.createElement("div");
         $subComments.setAttribute("class", "reply");

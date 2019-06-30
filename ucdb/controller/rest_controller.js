@@ -71,11 +71,14 @@ function postData(url, data = {}, authorization) {
 function getData(url,  authorization) {
     return fetch("http://" + encodeURI(url), initDefine(null,authorization,"GET"))
         .then(response => {
-                if(!!response) {
-                    return response.json();
+                if(!!response && response.ok) {
+                    try {
+                        return  response.json();
+                    } catch (e) {
+                    }
                 }
                 else {
-                    return null;
+
                 }
             }
         ).catch(err => err); // esconendo de mim meus propios erros!!!
