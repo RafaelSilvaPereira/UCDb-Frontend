@@ -61,10 +61,11 @@ function execSearchBySubjectName(local, applicationHeader, applicationMain) {
     let searchBarValue = applicationMain._form.searchBar.value;
 
     if (searchBarValue === "") {
-        getData("localhost:8080/api/v1/subjects/").then(response => console.log(response));
+        // getData("localhost:8080/api/v1/subjects/").then(response => console.log(response));
     } else {
         getData(`localhost:8080/api/v1/subjects/search/${encodeURI(searchBarValue.toUpperCase())}`)
-            .then(response => createGenericSubjectsProfile(document.getElementById("main-container"), response));
+            .then(response => createGenericSubjectsProfile(document.getElementById("main-container"), response))
+            .catch(err => alert("Ocorreu um erro nos nosso servidores, por favor entre mais tarde"));
     }
 
 }

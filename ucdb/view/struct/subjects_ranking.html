@@ -1,0 +1,21 @@
+<div id="pop-up-container-id" class="pop-up-container-c">
+    <form  id="ranking-form">
+        <p><label for="orderType">Ordene seu ranking</label></p>
+        <select name="orderType">
+            <option selected value="default">Padrão</option>
+            <option value="likes">Numero de Likes</option>
+            <option value="dislikes">Numero de deslikes</option>
+            <option value="comments">Numero de comentario</option>
+            <option value="proportion">Proporção de likes/deslikes</option>
+        </select>
+        <button type="button">Buscar</button>
+    </form>
+    <script>
+        console.log("oioooiii");
+        let form = document.getElementById("ranking-form");
+        console.log(form);
+        console.log(form.orderType);
+        console.log(form.orderType.value)
+
+    </script>
+</div>

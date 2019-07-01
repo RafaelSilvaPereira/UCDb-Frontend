@@ -11,7 +11,7 @@ class SubjectComment extends HTMLElement{
         this._type = type;
 
     }
-    
+
     connectedCallback() {
         this.commentID = this.getAttribute("commentID");
         this.studentName = this.getAttribute("studentName");

@@ -1,5 +1,5 @@
 import {get_html_to_other_dom, other_dom} from "../view/scripts/get_other_html.js";
-import {render, registerButton, searchButton, loginButton} from "../view/scripts/renderButtons.js"
+import {render, registerButton, searchButton, loginButton, rankingButton} from "../view/scripts/renderButtons.js"
 
 
 
@@ -9,6 +9,7 @@ let applicationHeader = {_loginButton : null, _registerButton : null, _searchBar
 const $searchSubject = document.querySelector('[search-subject]');
 const $registerUser = document.querySelector('[register-user]');
 const $userLogin = document.querySelector('[user-login]');
+const $subjectRanking = document.querySelector('[subjects-ranking]');
 const $main = document.getElementById("main-content");
 
 async function initialize() { /*apenas atribuindo os valores para os elementos que vão fazer parte do shadow dom*/
@@ -18,6 +19,8 @@ async function initialize() { /*apenas atribuindo os valores para os elementos q
     applicationHeader._loginButton = other_dom;
     await get_html_to_other_dom("./view/struct/search_bar.html");
     applicationHeader._searchBar = other_dom;
+    await get_html_to_other_dom("./view/struct/subjects_ranking.html");
+    applicationHeader._ranking = other_dom;
 }
 
 
@@ -30,6 +33,8 @@ $registerUser.onclick = () => registerButton($main, applicationHeader);
 /* search option*/
 $searchSubject.onclick = () => searchButton($main, applicationHeader);
 
+/* ranking subjects */
+$subjectRanking.onclick = () => rankingButton($main, applicationHeader);
 
 window.onbeforeunload = () => {window.localStorage.clear()};
 window.onclose = () => {window.localStorage.clear()};
