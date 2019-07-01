@@ -18,6 +18,7 @@ function createASubjectProfile(response, isEnjoyed, isDisliked) {
     $subject.setAttribute("likes", response.likes);
     $subject.setAttribute("dislikes", response.dislikes);
 
+
     $subjectContent.appendChild($subject);
 }
 

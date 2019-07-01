@@ -1,5 +1,5 @@
 import {SubjectComment} from "./SubjectComment.js";
-import {giveLike, giveDislike, sendComment} from "./subject_profile_controller.js";
+import {giveLike, giveDislike} from "./subject_profile_controller.js";
 // import {getData} from "../../controller/rest_controller.js";
 import {postData} from "../../controller/rest_controller.js";
 
@@ -32,8 +32,8 @@ render() {
         <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">${this._dislikes}</i></button>
         <form id="subject-comment">
             <div id="comment-container">
-                <textarea name="text-comment" id="comment-id" cols="30" rows="10" placeholder="conte para nós o que achou da disciplina"></textarea>
-                <button type="button" name="submit" send-comment class="send-comment-button">ENVIAR!</button>
+                <textarea name="text-comment" id="comment-id" cols="120" rows="10" placeholder="conte para nós o que achou da disciplina"></textarea>
+                <button type="button" name="submit" id="send-comment-to-subject-${this._id}" class="send-comment-button">ENVIAR!</button>
             </div>
         </form>
         <style>
@@ -48,25 +48,26 @@ render() {
 
     this.innerHTML = html;
     this.setLikeAndDislikeButtonState();
-    this.autoConfigureSubjectComments();
+    this.autoConfigureSubjectComments(this._comments);
     this.innerJS();
 }
 
-autoConfigureSubjectComments() {
+autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lista de comentários :( sdd's tipagem estatica agr
     let $subjectsComments = document.getElementById("subjectCommentsID");
-    if(!!$subjectsComments) { // caso já tenha sido settado o filho do no, apenas remova o elemento commenatrio e escreva denovo
-       $subjectsComments.parentNode.removeChild($subjectsComments)
-    }
+    // if(!!$subjectsComments) { // caso já tenha sido settado o filho do no, apenas remova o elemento commenatrio e escreva denovo
+    //    $subjectsComments.parentNode.removeChild($subjectsComments)
+    // }
 
     $subjectsComments = document.createElement("div");
     $subjectsComments.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
     $subjectsComments.setAttribute("id", "subjectCommentsID");
 
-    $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
-    this._comments.forEach(c => {
+    // $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
+    commentsList.forEach(c => {
         let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
 
-        console.log(comment);
+
+        comment.setAttribute("visible", c.visible);
         comment.setAttribute("commentID", c.commentID);
         comment.setAttribute("studentName", c.studentName);
         comment.setAttribute("studentSecondName", c.studentSecondName);
@@ -79,7 +80,7 @@ autoConfigureSubjectComments() {
     });
 
     this.appendChild($subjectsComments);
-}
+};
 
 setLikeAndDislikeButtonState() {
     if (this._userEnjoyed) {
@@ -89,12 +90,12 @@ setLikeAndDislikeButtonState() {
     if (this._userDisliked) {
         document.getElementById("dislike").classList.add("active-dislike");
     }
-}
+};
 
     innerJS() {
         const $like = document.getElementById("like");
         const $dislike = document.getElementById("dislike");
-        const $sendComment = document.querySelector("[send-comment]");
+        const $sendComment = document.getElementById(`send-comment-to-subject-${this._id}`);
         let $likeCount = $like.firstElementChild;
         let $dislikeCount = $dislike.firstElementChild;
 
@@ -105,19 +106,17 @@ setLikeAndDislikeButtonState() {
         $dislike.onclick = () => {
             giveDislike(this._id, $like, $dislike, $likeCount, $dislikeCount, this);
         };
-
         $sendComment.onclick = () => {
             const commentText = document.getElementById("comment-id").value;
             const userToken = window.localStorage.___access_token___;
-            postData("localhost:8080/api/v1/comment/create/" + this._id, {comment: commentText.trim()}, `Bearer ${userToken}`)
-                .then(newC => {
-                if(!!newC) {
-                    newC.setAttribute("visible", true);
-                    this._comments.push(newC);
-                    this.autoConfigureSubjectComments();
-                }
+            postData("localhost:8080/api/v1/comment/create/" + this._id, {comment: commentText.trim()},
+                `Bearer ${userToken}`).then(newC => {
+                    if(!!newC) {
+                        // this._comments.push();
+                        this.autoConfigureSubjectComments([newC]);
+                    }
             }).catch(err => alert("algo deu errado"));
-        }
+        };
 
     }
 }

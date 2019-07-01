@@ -1,5 +1,5 @@
 import {postData} from "../../controller/rest_controller.js";
-export {giveLike, giveDislike, sendComment}
+export {giveLike, giveDislike}
 
 function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject={_userEnjoyed:false, _userDisliked:false}){
     const userToken = window.localStorage.___access_token___;
@@ -94,16 +94,16 @@ function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subj
         alert("Algo deu errado no sistema, por favor tente outra vez mais tarde!");
     }
 }
-async function sendComment(subjectID, textComment) {
-
-    const userToken = window.localStorage.___access_token___;
-    try {
-        if (!!userToken) {
-            postData("localhost:8080/api/v1/comment/create/" + subjectID, {"comment": textComment}, "Bearer " + userToken)
-            return true;
-        } else throw new Error();
-    } catch (e) {
-        alert("Algo deu erro, tente denovo mais tarde ;-)");
-    }
-
-}
+// async function sendComment(subjectID, textComment) {
+//
+//     const userToken = window.localStorage.___access_token___;
+//     try {
+//         if (!!userToken) {
+//             postData("localhost:8080/api/v1/comment/create/" + subjectID, {"comment": textComment}, "Bearer " + userToken)
+//             return true;
+//         } else throw new Error();
+//     } catch (e) {
+//         alert("Algo deu erro, tente denovo mais tarde ;-)");
+//     }
+//
+// }

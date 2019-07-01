@@ -30,6 +30,7 @@ class SubjectComment extends HTMLElement{
         }
     }
     render() {
+        // language=HTML
         const html = `
             <style>
                 .comment-subject {
@@ -68,10 +69,16 @@ class SubjectComment extends HTMLElement{
                 </div>
                 <p class="comment">${this.comment}</p>
                 <button id="delete-${this.id}" type="button" class="delete-comment">DELETAR!</button>
+                <form id="subject-comment">
+                    <div id="reply-${this.id}">
+                        <textarea name="text-comment" id="reply-${this.id}-id" cols="10" rows="10" placeholder="responda o comentario!"></textarea>  
+                        <button type="button" name="submit" id="send-reply-${this.id}" class="send-comment-button">ENVIAR!</button>
+                    </div>
+                </form>
             </div>
         `;
 
-        this.innerHTML = (this._isvisible) ? html : "";
+        this.innerHTML = (!!this._isvisible) ? html : "";
 
         this.insertReplysOnComment();
         this.innerJS();
@@ -79,9 +86,8 @@ class SubjectComment extends HTMLElement{
     }
 
     innerJS() {
-        console.log(this);
-
         const $deleteButtom = document.getElementById(`delete-${this.id}`);
+        const $sendReply = document.getElementById(`send-reply-${this.id}`);
 
         $deleteButtom.onclick = () => {
             const token = window.localStorage.___access_token___;
@@ -91,10 +97,15 @@ class SubjectComment extends HTMLElement{
                         this.setAttribute("visible",false);
                         this.innerHTML = "";
                     }else {
-                        alert("algo deu errado nos nosso servidores, tente novamente mais tarde! ;-)")
+                        alert("Token invalido :( , por favor refaça seu login!! ")
                     }
-                })
+                }).catch(err => alert("lamentamos muito mas... algo deu errado nos nossos servidores :( . Por favor tente novamente mais tarde "))
+        };
 
+        $sendReply.onclick = () => {
+            const commentText = document.getElementById(`reply-${this.id}-id`).value;
+            const userToken = window.localStorage.___access_token___;
+            console.log(commentText);
 
         }
 
