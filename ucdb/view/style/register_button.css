@@ -1,0 +1,16 @@
+
+
+/*Form*/
+.form{
+    grid-column: 2 / 3 ;
+    grid-row: 2 / 5;
+    padding-bottom: 20px;
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
