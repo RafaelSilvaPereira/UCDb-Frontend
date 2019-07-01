@@ -106,7 +106,7 @@ class SubjectComment extends HTMLElement{
 
         $deleteButtom.onclick = () => {
             const token = window.localStorage.___access_token___;
-            deleteData(`localhost:8080/api/v1/comment/${this.commentID}`, {}, `Bearer ${token}`)
+            deleteData(`comment/${this.commentID}`, {}, `Bearer ${token}`)
                 .then(r => {
                     if (r===true) {
                         this.setAttribute("visible",false);
@@ -120,7 +120,7 @@ class SubjectComment extends HTMLElement{
         $sendReply.onclick = () => {
             const commentText = document.getElementById(`reply-${this.id}-id`).value;
             const userToken = window.localStorage.___access_token___;
-            const url = `localhost:8080/api/v1/comment/reply/${this.subjectID}/${this.commentID}`;
+            const url = `comment/reply/${this.subjectID}/${this.commentID}`;
             postData(url,{comment: commentText}, `Bearer ${userToken}`)
             .then( r => {
                 if(!!r) {

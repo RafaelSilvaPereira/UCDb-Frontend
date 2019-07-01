@@ -1,5 +1,10 @@
 export {postData, getData, deleteData};
 
+const protocol = "http://";
+const domain = "localhost:8080/";
+const apiVersion = "api/v1/";
+const urlBody = protocol + domain + apiVersion;
+
 function initDefine(data, authorization, method) {
     let init;
     let defautHeader = {'Accept' : '*/*',
@@ -47,56 +52,46 @@ function initDefine(data, authorization, method) {
     return init;
 }
 
-
-function deleteData(url, data = {}, authorization) {
-    return   fetch("http://" + encodeURI(url), initDefine(data, authorization, "DELETE"))
+function deleteData(path, data = {}, authorization) {
+    return   fetch(urlBody + encodeURI(path), initDefine(data, authorization, "DELETE"))
         .then(response => {
                 if(!!response && response.ok) {
                     try {
                         return  response.json();
                     } catch (e) {
+                        alert("Não foi possivel deletar este item!, tente denovo mais tarde")
                     }
                 }
-                else {
-
-                }
             }
-        ).catch(err => err); // esconendo de mim meus propios erros!!!
+        ).catch(err => err);
 }
 
-
-
-
-function postData(url, data = {}, authorization) {
-      return   fetch("http://" + encodeURI(url), initDefine(data, authorization, "POST"))
+function postData(path, data = {}, authorization) {
+      return   fetch(urlBody + encodeURI(path), initDefine(data, authorization, "POST"))
           .then(response => {
               if(!!response && response.ok) {
                   try {
                       return  response.json();
                   } catch (e) {
+                      alert("O banco de dados não respondeu essa requisição, por favor tente novamente mais tarde.")
                   }
-              }
-              else {
-
               }
           }
           ).catch(err => err); // esconendo de mim meus propios erros!!!
 }
 
 
-function getData(url,  authorization) {
-    return fetch("http://" + encodeURI(url), initDefine(null,authorization,"GET"))
+function getData(path,  authorization) {
+    return fetch(urlBody + encodeURI(path), initDefine(null,authorization,"GET"))
         .then(response => {
                 if(!!response && response.ok) {
                     try {
                         return  response.json();
                     } catch (e) {
+                    alert("Não foi possivel recuperar esse dado, por favor tente mais tarde")
                     }
                 }
-                else {
-
-                }
             }
-        ).catch(err => err); // esconendo de mim meus propios erros!!!
+        ).catch(err => err);
 }
 

@@ -66,6 +66,7 @@ autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lis
 
         comment.setAttribute("visible", c.visible);
         comment.setAttribute("commentID", c.commentID);
+        comment.setAttribute("id", `subject-${c.commentID}`);
         comment.setAttribute("studentName", c.studentName);
         comment.setAttribute("studentSecondName", c.studentSecondName);
         comment.setAttribute("comment", c.comment);
@@ -106,10 +107,9 @@ setLikeAndDislikeButtonState() {
         $sendComment.onclick = () => {
             const commentText = document.getElementById("comment-id").value;
             const userToken = window.localStorage.___access_token___;
-            postData("localhost:8080/api/v1/comment/create/" + this._id, {comment: commentText.trim()},
+            postData("comment/create/" + this._id, {comment: commentText.trim()},
                 `Bearer ${userToken}`).then(newC => {
                     if(!!newC) {
-                        // this._comments.push();
                         this.autoConfigureSubjectComments([newC]);
                     }
             }).catch(err => alert("algo deu errado"));

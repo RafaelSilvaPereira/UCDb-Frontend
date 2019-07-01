@@ -16,14 +16,13 @@ function loginFeatures(local,applicationHeader) {
             email: applicationHeader._form.email.value,
             password: applicationHeader._form.psw.value
         };
-        postData("localhost:8080/api/v1/login/", requestUser)
+        postData("login/", requestUser)
             .then(response => {
                 const tokenValue = response.token;
                 window.localStorage.setItem("___access_token___", tokenValue);
                 window.localStorage.setItem("___user_email___", requestUser.email);
-                window.localStorage.setItem("___user_password___", requestUser.password);
                 setTimeout(() => {
-                        alert("seu token ira inspirar em menos de 5 minutos, " +
+                        alert("seu login ira expirar em menos de 5 minutos, " +
                             "salve seu progresso que em menos de 5 minutos\nestaremos refazendo o seu login");
                         window.localStorage.clear();
                 }, 1000 * 60 * 55);
@@ -33,6 +32,6 @@ function loginFeatures(local,applicationHeader) {
                 }, 1000 * 60 * 60); // recriando o token
 
                 applicationHeader._closeButton.click();
-            }).catch(err => console.log(err));
+            }).catch(err => alert("algo de errado aconteceu, por favor tente novamente mais tarde"));
     };
 }

@@ -32,11 +32,11 @@ function execSearchById(local, applicationHeader, applicationMain) {
         if (!isNumber(searchBarValue)) {
             alert("Pesquise apenas pelo codigo de identificação da disciplina");
         } else {
-            getData(`localhost:8080/api/v1/subjects/id/${searchBarValue}`, `Bearer ${accessToken}`)
+            getData(`subjects/id/${searchBarValue}`, `Bearer ${accessToken}`)
                 .then(response => {
                     let subjectId = response.id;
-                    getData("localhost:8080/api/v1/students/enjoyed/"+ subjectId, "Bearer " + window.localStorage.___access_token___).then(isEnjoyed => {
-                        getData("localhost:8080/api/v1/students/disliked/" + subjectId, "Bearer " + window.localStorage.___access_token___).then(isDisliked => {
+                    getData("students/enjoyed/"+ subjectId, "Bearer " + window.localStorage.___access_token___).then(isEnjoyed => {
+                        getData("students/disliked/" + subjectId, "Bearer " + window.localStorage.___access_token___).then(isDisliked => {
                             createASubjectProfile(response, isEnjoyed, isDisliked);
                         })
                     })
@@ -60,10 +60,8 @@ function createGenericSubjectsProfile(local, response) {
 function execSearchBySubjectName(local, applicationHeader, applicationMain) {
     let searchBarValue = applicationMain._form.searchBar.value;
 
-    if (searchBarValue === "") {
-        // getData("localhost:8080/api/v1/subjects/").then(response => console.log(response));
-    } else {
-        getData(`localhost:8080/api/v1/subjects/search/${encodeURI(searchBarValue.toUpperCase())}`)
+    if (!searchBarValue !== "") {
+        getData(`subjects/search/${encodeURI(searchBarValue.toUpperCase())}`)
             .then(response => createGenericSubjectsProfile(document.getElementById("main-container"), response))
             .catch(err => alert("Ocorreu um erro nos nosso servidores, por favor entre mais tarde"));
     }

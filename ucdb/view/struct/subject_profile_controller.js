@@ -7,7 +7,7 @@ function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject
         if (!subject._userEnjoyed && !subject._userDisliked) { // 0 0
             if (!!userToken) {
 
-                postData(`localhost:8080/api/v1/subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
+                postData(`subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
                     .catch(err => {throw  new Error()});
 
                 $like.classList.add("active-like");
@@ -22,7 +22,7 @@ function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject
         } else if (subject._userEnjoyed && !subject._userDisliked) {  // 1 0
             if (!!userToken) {
                 $like.classList.remove("active-like");
-                postData(`localhost:8080/api/v1/subjects/unlike/${subjectID}`, null, `Bearer ${userToken}`)
+                postData(`subjects/unlike/${subjectID}`, null, `Bearer ${userToken}`)
                     .catch(err => {throw  new Error()})
                 $likeCount.innerText = "" + (parseInt($likeCount.textContent) - 1);
                 $dislikeCount.innerText = "" + $dislikeCount.textContent;
@@ -34,7 +34,7 @@ function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject
             }
         } else if (!subject._userEnjoyed && subject._userDisliked) { // 0 1
             if (!!userToken) {
-                postData(`localhost:8080/api/v1/subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
+                postData(`subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
                     .catch(err => {throw  new Error()}) // garantido pela api que o like remove o deslike
 
                 $like.classList.add("active-like");
@@ -57,7 +57,7 @@ function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subj
     try {
         if (!subject._userEnjoyed && !subject._userDisliked) { // 0 0
             if (!!userToken) {
-                postData(`localhost:8080/api/v1/subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`)
+                postData(`subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`)
                     .catch(err => {throw  new Error()});
                 $dislike.classList.add("active-dislike");
                 $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) + 1);
@@ -70,7 +70,7 @@ function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subj
 
         } else if (subject._userEnjoyed && !subject._userDisliked) {  // 1 0
             if (!!userToken) {
-                postData(`localhost:8080/api/v1/subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`)
+                postData(`subjects/dislike/${subjectID}`, null, `Bearer ${userToken}`)
                     .catch(err => {throw  new Error()});
                 $like.classList.remove("active-like");
                 $dislike.classList.add("active-dislike");
@@ -82,7 +82,7 @@ function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subj
                 throw new Error();
             }
         } else if (!subject._userEnjoyed && subject._userDisliked) { // 0 1
-            postData(`localhost:8080/api/v1/subjects/undislike/${subjectID}`, null, `Bearer ${userToken}`)
+            postData(`subjects/undislike/${subjectID}`, null, `Bearer ${userToken}`)
                 .catch(err => {throw  new Error()});
             $dislike.classList.remove("active-dislike");
             $dislikeCount.innerText = "" + (parseInt($dislikeCount.textContent) - 1);
@@ -94,16 +94,3 @@ function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subj
         alert("Algo deu errado no sistema, por favor tente outra vez mais tarde!");
     }
 }
-// async function sendComment(subjectID, textComment) {
-//
-//     const userToken = window.localStorage.___access_token___;
-//     try {
-//         if (!!userToken) {
-//             postData("localhost:8080/api/v1/comment/create/" + subjectID, {"comment": textComment}, "Bearer " + userToken)
-//             return true;
-//         } else throw new Error();
-//     } catch (e) {
-//         alert("Algo deu erro, tente denovo mais tarde ;-)");
-//     }
-//
-// }

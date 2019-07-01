@@ -21,7 +21,7 @@ function register_features(applicationHeader) {
             form.email.value,
             form.psw.value
         );
-        postData("localhost:8080/api/v1/students/", user).then(response => console.log(response))
+        postData("students/", user).then(response => console.log(response))
             .then(err => console.log(err))
     }
 }
