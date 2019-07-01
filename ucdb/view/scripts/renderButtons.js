@@ -7,6 +7,7 @@ export {render, loginButton, searchButton, registerButton, rankingButton};
 function render(local,elementHTMLDescription) {
     local.innerHTML = elementHTMLDescription;
 }
+
 function loginButton(local, applicationHeader) {
     render(local,applicationHeader._loginButton);
     loginFeatures(local, applicationHeader);
