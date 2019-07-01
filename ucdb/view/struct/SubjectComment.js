@@ -1,4 +1,5 @@
 export {SubjectComment}
+import {postData} from "../../controller/rest_controller.js";
 import {deleteData} from "../../controller/rest_controller.js";
 
 class SubjectComment extends HTMLElement{
@@ -10,6 +11,7 @@ class SubjectComment extends HTMLElement{
         this._type = type;
 
     }
+    
     connectedCallback() {
         this.commentID = this.getAttribute("commentID");
         this.studentName = this.getAttribute("studentName");
@@ -29,9 +31,20 @@ class SubjectComment extends HTMLElement{
             return "reply"
         }
     }
+
     render() {
         // language=HTML
-        const html = `
+        const html = this.getHtml();
+
+        this.innerHTML = (!!this._isvisible) ? html : "";
+
+        this.insertReplysOnComment(this.subComments);
+        this.innerJS();
+
+    }
+
+    getHtml() {
+        const defautHTML = `
             <style>
                 .comment-subject {
                     background-color: red; /*diferencia comentario de respostas*/
@@ -66,9 +79,13 @@ class SubjectComment extends HTMLElement{
                     <p class="comment-id"><i>id: ${this.commentID}</i></p>
                     <p class="author">escrito por: ${this.studentName} ${this.studentSecondName}</p> 
                     <p class="date">as: ${this.hour} do dia ${this.date}</p>
-                </div>
+            </div>  
                 <p class="comment">${this.comment}</p>
                 <button id="delete-${this.id}" type="button" class="delete-comment">DELETAR!</button>
+            `;
+        if(this._type === "comment-subject") {
+            return defautHTML + `
+            
                 <form id="subject-comment">
                     <div id="reply-${this.id}">
                         <textarea name="text-comment" id="reply-${this.id}-id" cols="10" rows="10" placeholder="responda o comentario!"></textarea>  
@@ -77,11 +94,9 @@ class SubjectComment extends HTMLElement{
                 </form>
             </div>
         `;
-
-        this.innerHTML = (!!this._isvisible) ? html : "";
-
-        this.insertReplysOnComment();
-        this.innerJS();
+        } else {
+            return  defautHTML + "</div>"
+        }
 
     }
 
@@ -105,26 +120,34 @@ class SubjectComment extends HTMLElement{
         $sendReply.onclick = () => {
             const commentText = document.getElementById(`reply-${this.id}-id`).value;
             const userToken = window.localStorage.___access_token___;
-            console.log(commentText);
-
+            const url = `localhost:8080/api/v1/comment/reply/${this.subjectID}/${this.commentID}`;
+            postData(url,{comment: commentText}, `Bearer ${userToken}`)
+            .then( r => {
+                if(!!r) {
+                    this.insertReplysOnComment([r]);
+                }
+            }).catch(err => alert(err))
         }
-
-
-
     }
 
-    insertReplysOnComment() {
+    insertReplysOnComment(subCommentsList) {
         const $subComments = document.createElement("div");
+
         $subComments.setAttribute("class", "reply");
-        $subComments.innerHTML = "";
-        this.subComments.forEach(sc => {
+        $subComments.setAttribute("id", `reply-to-subject-id-${this.commentID}`);
+        subCommentsList.forEach(sc => {
 
             let reply = new SubjectComment(this.subjectID, [], "reply");
+
+            reply.setAttribute("visible", sc.visible);
             reply.setAttribute("commentID", sc.commentID);
             reply.setAttribute("studentName", sc.studentName);
             reply.setAttribute("studentSecondName", sc.studentSecondName);
             reply.setAttribute("comment", sc.comment);
             reply.setAttribute("commentDate", sc.date);
+            reply.setAttribute("commentDate", sc.commentDate);
+            reply.setAttribute("commentHour", sc.commentHour);
+            reply.setAttribute("visible", sc.visible);
             $subComments.appendChild(reply);
         });
 
@@ -132,4 +155,3 @@ class SubjectComment extends HTMLElement{
     }
 }
 window.customElements.define("subject-comment", SubjectComment);
-

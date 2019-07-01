@@ -54,9 +54,6 @@ render() {
 
 autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lista de comentários :( sdd's tipagem estatica agr
     let $subjectsComments = document.getElementById("subjectCommentsID");
-    // if(!!$subjectsComments) { // caso já tenha sido settado o filho do no, apenas remova o elemento commenatrio e escreva denovo
-    //    $subjectsComments.parentNode.removeChild($subjectsComments)
-    // }
 
     $subjectsComments = document.createElement("div");
     $subjectsComments.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
@@ -74,7 +71,7 @@ autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lis
         comment.setAttribute("comment", c.comment);
         comment.setAttribute("commentDate", c.commentDate);
         comment.setAttribute("commentHour", c.commentHour);
-        comment.setAttribute("visible", true);
+        comment.setAttribute("visible", c.visible);
         $subjectsComments.appendChild(comment);
 
     });
