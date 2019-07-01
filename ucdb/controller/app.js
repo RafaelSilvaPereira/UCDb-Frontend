@@ -1,3 +1,7 @@
+/**
+ * @Author: Rafael da Silva Pereira
+ */
+
 import {get_html_to_other_dom, other_dom} from "../view/scripts/get_other_html.js";
 import {render, registerButton, searchButton, loginButton, rankingButton} from "../view/scripts/renderButtons.js"
 
