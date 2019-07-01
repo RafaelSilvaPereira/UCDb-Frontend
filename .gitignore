@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/eclipse,intellij,phpstorm+iml,phpstorm+all,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=eclipse,intellij,phpstorm+iml,phpstorm+all,visualstudio,visualstudiocode
 
+.xml
+
 ### Eclipse ###
 .metadata
 bin/
