@@ -1,6 +1,6 @@
 export {SubjectenericProfile}
-class SubjectenericProfile extends HTMLElement{
 
+class SubjectenericProfile extends HTMLElement{
     constructor() {
         super();
         this.$shadow = this.attachShadow({"mode": "open"});
@@ -14,7 +14,7 @@ class SubjectenericProfile extends HTMLElement{
     }
 
     render() {
-        this.$shadow.innerHTML = `<link rel="stylesheet" href="./view/struct/SubjectGenericProfile.css">
+        this.$shadow.innerHTML = `
              <p class="subject-name">${this.name}</p>
              <p class="subject-id">${this.id}</p>`;
 
