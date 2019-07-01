@@ -1,6 +1,6 @@
 /**
  * @Author: Rafael da Silva Pereira
- * modulo de controle de delegação de responsabilidades do sistema.
+ * Modulo de controle de delegação de responsabilidades do sistema.
  * apartir dos botões da view, renderizam seus respectivos html's e junto com eles suas funcionaldiades
  */
 
