@@ -1,4 +1,4 @@
-import {postData} from "../../controller/rest_controller.js";
+import {postData} from "../../../../controller/rest_controller.js";
 export {giveLike, giveDislike}
 
 function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject={_userEnjoyed:false, _userDisliked:false}){
@@ -23,7 +23,9 @@ function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject
             if (!!userToken) {
                 $like.classList.remove("active-like");
                 postData(`subjects/unlike/${subjectID}`, null, `Bearer ${userToken}`)
-                    .catch(err => {throw  new Error()})
+                    .catch(err => {
+                        throw  new Error()
+                    });
                 $likeCount.innerText = "" + (parseInt($likeCount.textContent) - 1);
                 $dislikeCount.innerText = "" + $dislikeCount.textContent;
 
@@ -35,7 +37,9 @@ function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject
         } else if (!subject._userEnjoyed && subject._userDisliked) { // 0 1
             if (!!userToken) {
                 postData(`subjects/like/${subjectID}`, null, `Bearer ${userToken}`)
-                    .catch(err => {throw  new Error()}) // garantido pela api que o like remove o deslike
+                    .catch(err => {
+                        throw  new Error()
+                    }); // garantido pela api que o like remove o deslike
 
                 $like.classList.add("active-like");
                 $dislike.classList.remove("active-dislike");

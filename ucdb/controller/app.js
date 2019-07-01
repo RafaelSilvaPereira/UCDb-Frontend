@@ -13,13 +13,14 @@ const $subjectRanking = document.querySelector('[subjects-ranking]');
 const $main = document.getElementById("main-content");
 
 async function initialize() { /*apenas atribuindo os valores para os elementos que vão fazer parte do shadow dom*/
-    await get_html_to_other_dom("./view/struct/register_button.html");
+    await get_html_to_other_dom("./view/struct/components/Register/register_button.html");
     applicationHeader._registerButton = other_dom;
-    await get_html_to_other_dom("./view/struct/login_button.html");
+
+    await get_html_to_other_dom("./view/struct/components/Login/login_button.html");
     applicationHeader._loginButton = other_dom;
-    await get_html_to_other_dom("./view/struct/search_bar.html");
+    await get_html_to_other_dom("./view/struct/components/Search/search_bar.html");
     applicationHeader._searchBar = other_dom;
-    await get_html_to_other_dom("./view/struct/subjects_ranking.html");
+    await get_html_to_other_dom("./view/struct/components/Ranking/subjects_ranking.html");
     applicationHeader._ranking = other_dom;
 }
 

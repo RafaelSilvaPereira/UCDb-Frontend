@@ -1,5 +1,5 @@
-import {postData} from "../../controller/rest_controller.js";
-import {loginButton} from "../scripts/renderButtons.js";
+import {postData} from "../../../../controller/rest_controller.js";
+import {loginButton} from "../../../scripts/renderButtons.js";
 export {loginFeatures}
 
 

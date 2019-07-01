@@ -1,7 +1,7 @@
-import {loginFeatures} from "../struct/login_features.js";
-import {search_subject} from "../struct/search_features.js";
-import {register_features} from "../struct/register_features.js";
-import {ranking_features} from "../struct/ranking_features.js";
+import {loginFeatures} from "../struct/components/Login/login_features.js";
+import {search_subject} from "../struct/components/Search/search_features.js";
+import {register_features} from "../struct/components/Register/register_features.js";
+import {ranking_features} from "../struct/components/Ranking/ranking_features.js";
 export {render, loginButton, searchButton, registerButton, rankingButton};
 
 function render(local,elementHTMLDescription) {

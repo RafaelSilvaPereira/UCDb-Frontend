@@ -1,6 +1,5 @@
 export {SubjectComment}
-import {postData} from "../../controller/rest_controller.js";
-import {deleteData} from "../../controller/rest_controller.js";
+import {deleteData, postData} from "../../../../controller/rest_controller.js";
 
 class SubjectComment extends HTMLElement{
 
@@ -24,14 +23,6 @@ class SubjectComment extends HTMLElement{
         this.render();
     }
 
-    chooseClass() {
-        if(this._type==="comment-subject") {
-            return "comment-subject"
-        } else {
-            return "reply"
-        }
-    }
-
     render() {
         // language=HTML
         const html = this.getHtml();
@@ -45,42 +36,14 @@ class SubjectComment extends HTMLElement{
 
     getHtml() {
         const defautHTML = `
-            <style>
-                .comment-subject {
-                    background-color: red; /*diferencia comentario de respostas*/
-                }
-                
-                .comment-info {
-                    /*a*/
-                }
-                
-                .reply {
-                    background-color: blue; /*diferencia comentario de respostas*/
-                }
-                
-                .comment-id {
-                    /*preencha tds se achar necessario*/
-                }
-                
-                .author{
-                    /*fique sem mensagens para tu*/
-                }
-                
-                .date {
-                    /*na faixa de gaza, so homem bomba na guerra eh tudo ou nada*/
-                }
-                
-                .comment {
-                    background-color: green; /*diferencia comentario de respostas*/
-                }
-            </style>
+            ${this.getCss()};
             <div class="${this.chooseClass()}">
-                <div class="comment-info">
-                    <p class="comment-id"><i>id: ${this.commentID}</i></p>
-                    <p class="author">escrito por: ${this.studentName} ${this.studentSecondName}</p> 
-                    <p class="date">as: ${this.hour} do dia ${this.date}</p>
+                <div class="comment-info-class">
+                    <p class="comment-id-class"><i>id: ${this.commentID}</i></p>
+                    <p class="author-class">escrito por: ${this.studentName} ${this.studentSecondName}</p> 
+                    <p class="date-class">as: ${this.hour} do dia ${this.date}</p>
             </div>  
-                <p class="comment">${this.comment}</p>
+                <p class="comment-class">${this.comment}</p>
                 <button id="delete-${this.id}" type="button" class="delete-comment">DELETAR!</button>
             `;
         if(this._type === "comment-subject") {
@@ -98,6 +61,41 @@ class SubjectComment extends HTMLElement{
             return  defautHTML + "</div>"
         }
 
+    }
+
+    getCss() {
+        return `
+            <style>
+                .comment-subject {
+                    background-color: red; /*diferencia comentario de respostas*/
+                }
+                
+                .reply {
+                    background-color: blue; /*diferencia comentario de respostas*/
+                }
+                
+                .comment-info-class {
+                    /*a*/
+                }
+                
+                
+                .comment-id-class {
+                    /*preencha tds se achar necessario*/
+                }
+                
+                .author-class{
+                    /*fique sem mensagens para tu*/
+                }
+                
+                .date-class {
+                    /*na faixa de gaza, so homem bomba na guerra eh tudo ou nada*/
+                }
+                
+                .comment-class {
+                    background-color: green; /*diferencia comentario de respostas*/
+                }
+            </style>
+        `;
     }
 
     innerJS() {
@@ -130,6 +128,14 @@ class SubjectComment extends HTMLElement{
         }
     }
 
+    chooseClass() {
+        if (this._type === "comment-subject") {
+            return "comment-subject"
+        } else {
+            return "reply"
+        }
+    }
+
     insertReplysOnComment(subCommentsList) {
         const $subComments = document.createElement("div");
 
@@ -153,5 +159,6 @@ class SubjectComment extends HTMLElement{
 
         this.appendChild($subComments);
     }
+
 }
 window.customElements.define("subject-comment", SubjectComment);

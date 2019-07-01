@@ -1,8 +1,8 @@
-import {isNumber} from "../../controller/util/util.js";
-import {getData} from "../../controller/rest_controller.js";
-import {loginButton} from "../scripts/renderButtons.js";
-import {SubjectenericProfile} from "./SubjectGenericProfile.js";
-import {SubjectProfile} from "./SubjectProfile.js"
+import {isNumber} from "../../../../controller/util/util.js";
+import {getData} from "../../../../controller/rest_controller.js";
+import {loginButton} from "../../../scripts/renderButtons.js";
+import {SubjectenericProfile} from "../GenericWebComponents/SubjectGenericProfile.js";
+import {SubjectProfile} from "../GenericWebComponents/SubjectProfile.js"
 export {search_subject}
 
 
@@ -26,7 +26,7 @@ function execSearchById(local, applicationHeader, applicationMain) {
     const accessToken = window.localStorage.___access_token___;
     if((!accessToken)){
         alert("sem token");
-        loginButton(local,applicationHeader, applicationMain);
+        loginButton(local, applicationHeader);
     } else {
         let searchBarValue = applicationMain._form.searchBar.value;
         if (!isNumber(searchBarValue)) {

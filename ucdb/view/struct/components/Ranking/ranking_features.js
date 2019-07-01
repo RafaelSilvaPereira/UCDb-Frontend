@@ -1,5 +1,6 @@
-import {getData} from "../../controller/rest_controller.js";
-import {SubjectenericProfile} from "./SubjectGenericProfile.js";
+import {getData} from "../../../../controller/rest_controller.js";
+import {SubjectenericProfile} from "../GenericWebComponents/SubjectGenericProfile.js";
+import {loginButton} from "../../../scripts/renderButtons.js";
 
 export {ranking_features};
 
@@ -27,11 +28,13 @@ function execRanking() {
 }
 
 function ranking_features(local,applicationHeader) {
-
-    execRanking();
-    const botaoDeBusca = document.getElementById("raquear-disciplinas");// se eu esqueçer de como escreve em inglês, eu peço desculpa, mas as 4:00 da segunda eu queria é ta dormindo
-    botaoDeBusca.onclick = () => execRanking();
-
+    if (!window.localStorage.___access_token___) {
+        alert("Não foi possivel mostrar o ranking de disciplinas usuario não logado, por favor efetue o login e tente novamente....");
+        loginButton(local, applicationHeader);
+    } else {
+        execRanking();
+        const botaoDeBusca = document.getElementById("raquear-disciplinas");// se eu esqueçer de como escreve em inglês, eu peço desculpa, mas as 4:00 da segunda eu queria é ta dormindo
+        botaoDeBusca.onclick = () => execRanking();
+    }
 }
 
-console.log("ooooi");
