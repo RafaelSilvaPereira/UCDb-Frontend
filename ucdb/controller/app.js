@@ -1,5 +1,6 @@
 /**
  * @Author: Rafael da Silva Pereira
+ * Classe de controle de delegação de responsabilidades do sistema.
  */
 
 import {get_html_to_other_dom, other_dom} from "../view/scripts/get_other_html.js";
