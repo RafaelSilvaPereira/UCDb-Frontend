@@ -1,0 +1,1 @@
+Diretorio responsavel por conter todas as imagens a serem carregadas na aplicação.

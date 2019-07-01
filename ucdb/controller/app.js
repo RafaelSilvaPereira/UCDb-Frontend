@@ -4,7 +4,7 @@
  * apartir dos botões da view, renderizam seus respectivos html's e junto com eles suas funcionaldiades
  */
 
-import {get_html_to_other_dom, other_dom} from "../view/scripts/get_other_html.js";
+import {get_html_to_other_dom, other_html} from "../view/scripts/get_other_html.js";
 import {registerButton, searchButton, loginButton, rankingButton} from "../view/scripts/renderButtons.js"
 
 
@@ -19,13 +19,13 @@ const $main = document.getElementById("main-content");
 
 async function initialize() { /*apenas atribuindo os valores para os elementos que vão ser carregados na dom*/
     await get_html_to_other_dom("./view/struct/components/Register/register_button.html");
-    applicationHeader._registerButton = other_dom;
+    applicationHeader._registerButton = other_html;
     await get_html_to_other_dom("./view/struct/components/Login/login_button.html");
-    applicationHeader._loginButton = other_dom;
+    applicationHeader._loginButton = other_html;
     await get_html_to_other_dom("./view/struct/components/Search/search_bar.html");
-    applicationHeader._searchBar = other_dom;
+    applicationHeader._searchBar = other_html;
     await get_html_to_other_dom("./view/struct/components/Ranking/subjects_ranking.html");
-    applicationHeader._ranking = other_dom;
+    applicationHeader._ranking = other_html;
 }
 
 
