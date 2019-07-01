@@ -1,3 +1,8 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 #pop-up-container-id {
     position: fixed;
     z-index: 1;
@@ -12,4 +17,84 @@
 @keyframes zoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
+}
+
+/*Box */
+.pop-up-content {
+    background-color: #a3a3ff;
+    margin: 100px auto;
+    border: 1px solid #888;
+    width: 300px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 0.5fr repeat(3, 1fr);
+
+}
+
+/*Grid Menu*/
+span{
+    grid-area: close;
+    grid-column: 3;
+    grid-row: 1;
+}
+.form{
+    grid-column: 2 / 3 ;
+    grid-row: 2 / 5;
+    padding-bottom: 20px;
+}
+/* Animação */
+.animate {
+    animation: zoom 0.6s;
+}
+
+/*Button close*/
+
+.close {
+    height: 60px;
+    color: #000;
+    font-size: 50px;
+    font-weight: bold;
+}
+.close:hover,.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/*Form*/
+
+#register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+input{
+    border: none;
+    width: 210px;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+::-webkit-input-placeholder {
+    color: #a3a3ff;
+    font-weight: bold;
+}
+
+/*Botão Pronto*/
+
+button {
+    margin-top: 20px;
+    border: none;
+    padding: 10px 60px;
+    background-color: #ffffff;
+    color: #0a0ae6;
+}
+
+button:hover, button:active{
+    background-color:#0a0ae6 ;
+    color: #ffffff;
 }
