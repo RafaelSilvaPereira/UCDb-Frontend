@@ -1,11 +1,14 @@
 export {SubjectComment}
+import {deleteData} from "../../controller/rest_controller.js";
 
 class SubjectComment extends HTMLElement{
+
     constructor(subjectID=-1, subComments=[], type="comment") {
         super();
         this.subjectID = subjectID;
         this.subComments = subComments;
         this._type = type;
+
     }
     connectedCallback() {
         this.commentID = this.getAttribute("commentID");
@@ -14,6 +17,8 @@ class SubjectComment extends HTMLElement{
         this.comment = this.getAttribute("comment");
         this.date = this.getAttribute("commentDate");
         this.hour = this.getAttribute("commentHour");
+        this._isvisible = this.getAttribute("visible");
+        this.setAttribute("id", `comment-${this.commentID}`); // para ser setado automaticamente em todas as subjects
         this.render();
     }
 
@@ -59,15 +64,45 @@ class SubjectComment extends HTMLElement{
                 <div class="comment-info">
                     <p class="comment-id"><i>id: ${this.commentID}</i></p>
                     <p class="author">escrito por: ${this.studentName} ${this.studentSecondName}</p> 
-                    <p id="date">as: ${this.hour} do dia ${this.date}</p>
+                    <p class="date">as: ${this.hour} do dia ${this.date}</p>
                 </div>
                 <p class="comment">${this.comment}</p>
-                
+                <button id="delete-${this.id}" type="button" class="delete-comment">DELETAR!</button>
             </div>
         `;
 
-        this.innerHTML = html;
+        this.innerHTML = (this._isvisible) ? html : "";
 
+        this.insertReplysOnComment();
+        this.innerJS();
+
+    }
+
+    innerJS() {
+        console.log(this);
+
+        const $deleteButtom = document.getElementById(`delete-${this.id}`);
+
+        $deleteButtom.onclick = () => {
+            const token = window.localStorage.___access_token___;
+            deleteData(`localhost:8080/api/v1/comment/${this.commentID}`, {}, `Bearer ${token}`)
+                .then(r => {
+                    if (r===true) {
+                        this.setAttribute("visible",false);
+                        this.innerHTML = "";
+                    }else {
+                        alert("algo deu errado nos nosso servidores, tente novamente mais tarde! ;-)")
+                    }
+                })
+
+
+        }
+
+
+
+    }
+
+    insertReplysOnComment() {
         const $subComments = document.createElement("div");
         $subComments.setAttribute("class", "reply");
         $subComments.innerHTML = "";
@@ -76,9 +111,9 @@ class SubjectComment extends HTMLElement{
             let reply = new SubjectComment(this.subjectID, [], "reply");
             reply.setAttribute("commentID", sc.commentID);
             reply.setAttribute("studentName", sc.studentName);
-            reply.setAttribute("studentSecondName",sc.studentSecondName);
+            reply.setAttribute("studentSecondName", sc.studentSecondName);
             reply.setAttribute("comment", sc.comment);
-            reply.setAttribute("commentDate",sc.date);
+            reply.setAttribute("commentDate", sc.date);
             $subComments.appendChild(reply);
         });
 

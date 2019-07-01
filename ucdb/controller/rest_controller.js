@@ -1,3 +1,5 @@
+export {postData, getData, deleteData};
+
 function initDefine(data, authorization, method) {
     let init;
     let defautHeader = {'Accept' : '*/*',
@@ -46,7 +48,21 @@ function initDefine(data, authorization, method) {
 }
 
 
+function deleteData(url, data = {}, authorization) {
+    return   fetch("http://" + encodeURI(url), initDefine(data, authorization, "DELETE"))
+        .then(response => {
+                if(!!response && response.ok) {
+                    try {
+                        return  response.json();
+                    } catch (e) {
+                    }
+                }
+                else {
 
+                }
+            }
+        ).catch(err => err); // esconendo de mim meus propios erros!!!
+}
 
 
 
@@ -84,4 +100,3 @@ function getData(url,  authorization) {
         ).catch(err => err); // esconendo de mim meus propios erros!!!
 }
 
-export {postData, getData};

@@ -55,7 +55,6 @@ render() {
 autoConfigureSubjectComments() {
     let $subjectsComments = document.getElementById("subjectCommentsID");
     if(!!$subjectsComments) { // caso já tenha sido settado o filho do no, apenas remova o elemento commenatrio e escreva denovo
-        console.log($subjectsComments);
        $subjectsComments.parentNode.removeChild($subjectsComments)
     }
 
@@ -66,13 +65,17 @@ autoConfigureSubjectComments() {
     $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
     this._comments.forEach(c => {
         let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
+
+        console.log(comment);
         comment.setAttribute("commentID", c.commentID);
         comment.setAttribute("studentName", c.studentName);
-        comment.setAttribute("studentSecondName",c.studentSecondName);
+        comment.setAttribute("studentSecondName", c.studentSecondName);
         comment.setAttribute("comment", c.comment);
-        comment.setAttribute("commentDate",c.commentDate);
-        comment.setAttribute("commentHour", c.commentHour)
+        comment.setAttribute("commentDate", c.commentDate);
+        comment.setAttribute("commentHour", c.commentHour);
+        comment.setAttribute("visible", true);
         $subjectsComments.appendChild(comment);
+
     });
 
     this.appendChild($subjectsComments);
@@ -106,15 +109,16 @@ setLikeAndDislikeButtonState() {
         $sendComment.onclick = () => {
             const commentText = document.getElementById("comment-id").value;
             const userToken = window.localStorage.___access_token___;
-            postData("localhost:8080/api/v1/comment/create/" + this._id, {comment: commentText.trim()},
-                `Bearer ${userToken}`)
+            postData("localhost:8080/api/v1/comment/create/" + this._id, {comment: commentText.trim()}, `Bearer ${userToken}`)
                 .then(newC => {
                 if(!!newC) {
+                    newC.setAttribute("visible", true);
                     this._comments.push(newC);
                     this.autoConfigureSubjectComments();
                 }
             }).catch(err => alert("algo deu errado"));
         }
+
     }
 }
 
