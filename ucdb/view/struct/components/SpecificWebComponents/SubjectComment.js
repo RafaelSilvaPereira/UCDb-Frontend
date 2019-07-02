@@ -53,21 +53,23 @@ class SubjectComment extends HTMLElement{
         const defautHTML = `
             ${this.getCss()};
             <div class="${this.chooseClass()}">
+            <div>
                 <div class="comment-info-class">
-                    <p class="comment-id-class"><i>id: ${this.commentID}</i></p>
-                    <p class="author-class">escrito por: ${this.studentName} ${this.studentSecondName}</p> 
-                    <p class="date-class">as: ${this.hour} do dia ${this.date}</p>
-            </div>  
+                    <p class="comment-id-class"><i>ID: ${this.commentID}</i></p>
+                    <p class="author-class">Escrito por: ${this.studentName} ${this.studentSecondName}</p> 
+                    <p class="date-class">Às: ${this.hour} do dia ${this.date}</p>
+                </div>
+                 
                 <p class="comment-class">${this.comment}</p>
                 <button id="delete-${this.id}" type="button" class="delete-comment">DELETAR!</button>
+            </div>
             `;
         if(this._type === "comment-subject") {
             return defautHTML + `
-            
                 <form id="subject-comment">
                     <div id="reply-${this.id}">
-                        <textarea name="text-comment" id="reply-${this.id}-id" cols="10" rows="10" placeholder="responda o comentario!"></textarea>  
-                        <button type="button" name="submit" id="send-reply-${this.id}" class="send-comment-button">ENVIAR!</button>
+                        <textarea name="text-comment" class="box-resposta" id="reply-${this.id}-id" cols="10" rows="10" placeholder="Responda ao comentário!"></textarea>  
+                        <button type="button" name="submit" id="send-reply-${this.id}" class="send-comment-button">RESPONDER!</button>
                     </div>
                 </form>
             </div>
@@ -83,17 +85,40 @@ class SubjectComment extends HTMLElement{
         return `
             <style>
                 .comment-subject {
-                    background-color: red; /*diferencia comentario de respostas*/
+                    display: inline-flex;
+                    border-radius: 10px;
+                    background-color: rgba(255,255,255,0.4); /*diferencia comentario de respostas*/
                 }
                 
                 .reply {
-                    background-color: blue; /*diferencia comentario de respostas*/
+                        width: 450px;
+                        background-color: rgba(255,255,255,0.2);
+                        border-radius: 10px;; /*diferencia comentario de respostas*/
                 }
                 
                 .comment-info-class {
+                    display: inline-flex;
                     /*a*/
+                 
                 }
                 
+                div#subjectCommentsID {
+                    background: rgba(10,10,230,0.3);
+                    padding: 3px;
+                    border-radius: 6px;
+                }
+                
+                p{
+                     width: auto;
+                     margin: 0px 10px;
+                }
+                
+                
+                
+                .box-resposta {
+                    width: 400px;
+                    height: 100px;
+                }
                 
                 .comment-id-class {
                     /*preencha tds se achar necessario*/
@@ -108,7 +133,26 @@ class SubjectComment extends HTMLElement{
                 }
                 
                 .comment-class {
-                    background-color: green; /*diferencia comentario de respostas*/
+                    background-color: white; /*diferencia comentario de respostas*/
+                    width: auto;
+                    max-width: 500px;
+                    min-height: 50px;
+                    height: auto;
+                    border-radius: 10px;
+                    text-indent: 10px;
+                }
+                #0{
+                display: none;
+                }
+                
+                button {
+                    margin: 5px 10px;
+                    padding: 5px;
+                }
+                
+                #subject-comment{
+                    margin: 5px auto;
+                    margin-top: 20px;
                 }
             </style>
         `;

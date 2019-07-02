@@ -35,66 +35,113 @@ class SubjectProfile extends HTMLElement {
     getHtml() {
         const html = `
             ${this.getCss()}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <div class="disciplina-comment">
-                 <p id="subject-name">${this._name}</p>
-                 <p id="subject-id">${this._id}</p>
-            </div>
-            <button id="like"><i id="ico-like" class="fa fa-thumbs-up">${this._likes}</i></button>
-            <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">${this._dislikes}</i></button>
-            <form id="subject-comment">
-                <div id="comment-container">
-                    <textarea name="text-comment" id="comment-id" cols="120" rows="10" placeholder="Conte para nós o que achou da disciplina."></textarea>
-                    <button type="button" name="submit" id="send-comment-to-subject-${this._id}" class="send-comment-button">ENVIAR!</button>
+            <div class="box-comment">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <div class="disciplina-comment">
+                     <p id="subject-name">${this._name}</p>
+                     <p id="subject-id">${this._id}</p>
                 </div>
-            </form>
+                <button id="like"><i id="ico-like" class="fa fa-thumbs-up">${this._likes}</i></button>
+                <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">${this._dislikes}</i></button>
+                <form id="subject-comment">
+                    <div id="comment-container">
+                        <textarea name="text-comment" id="comment-id" cols="120" rows="10" placeholder="Conte para nós o que achou da disciplina."></textarea>
+                        <button type="button" name="submit" id="send-comment-to-subject-${this._id}" class="send-comment-button">ENVIAR!</button>
+                    </div>
+                </form>
+            </div>
             `;
         return html;
     }
 
     getCss() {
-        const css = `
-            <style>
+        const css = `<style>
             .active-like {
-                color: dodgerblue;
+                color: green;
+            }
+            #like{
+                width: 40px;
+                grid-row: 2;
+                grid-column: 5;
+            }
+            #dislike{
+                width: 40px;
+                grid-row: 2;
+                grid-column: 5;
+                margin-left: 50px;
             }
 
             .active-dislike {
-                color: indianred;
+                color: red; 
             }
             
+            button{
+                border: none;
+                padding: 10px 10px;
+                background-color: #ffffff;
+                color: #0a0ae6;
+            }
+            
+            .box-comment{
+                display: grid;
+                width: 100%;
+                height: 500px;
+                grid-template-columns: repeat(6, 170px);
+                grid-template-rows: repeat(6,1fr) ;
+            }
+            
+            ::-webkit-input-placeholder {
+                color: #a3a3ff;
+                font-weight: bold;
+                font-size: 20px;
+                margin: 15px;
+            }
+
             .disciplina-comment{
             background-color: #a3a3ff;
             margin: 20px auto;
             padding: 20px;
             width: auto;
+            grid-row: 1;
+            grid-column: 1/7;
             display: grid;
             grid-template-rows: 1fr;
             grid-template-columns: repeat(6, 1fr);
             font-size: 20px;
             font-weight: bold;
-        }
+            }
+            
+             #subject-name{
+                grid-column: 3/ 6;
+                align-self: center;
+            }
+            
+            #subject-id{
+                margin-left: 10px;
+                align-self: center;
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            #subject-comment{
+                grid-row: 2/3;
+                grid-column: 2/5;
+                
+                
+            }
+            
+            
+            #subject-comment, #comment-container, #comment-id{
+                margin: 20px auto;
+                display: block;
+                width: 450px;
+            }
+            
+            button{
+                align-self: center;
+            }
         
-         #subject-name{
-            grid-column: 3/ 6;
-            align-self: center;
-        }
-        
-        #subject-id{
-            margin-left: 10px;
-            align-self: center;
-            grid-column: 1;
-            grid-row: 1;
-        }
-        
-        
-        #subject-comment, #comment-container, #comment-id{
-            margin: 20px auto;
-            display: block;
-        }
-        
-            </style>
-        `;
+            </style>`;
         return css;
     }
 

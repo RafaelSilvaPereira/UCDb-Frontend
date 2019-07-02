@@ -37,7 +37,7 @@ button:hover, button:active{
     color: black;
 }
 
-::-webkit-input-placeholder {
+::-webkit-input-placeholder{
     color: #a3a3ff;
     font-weight: bold;
 }
