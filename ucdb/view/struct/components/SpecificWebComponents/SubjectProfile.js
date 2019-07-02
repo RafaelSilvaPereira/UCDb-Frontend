@@ -94,9 +94,9 @@ class SubjectProfile extends HTMLElement {
             .box-comment{
                 display: grid;
                 width: 100%;
-                height: 500px;
+                height: 400px;
                 grid-template-columns: repeat(6, 170px);
-                grid-template-rows: repeat(6,1fr) ;
+                grid-template-rows: repeat(3,1fr) ;
             }
             
             ::-webkit-input-placeholder {
