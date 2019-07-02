@@ -1,3 +1,10 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * O modulo é responsavel por ser a representação generica de uma disciplina (representação acessivel a todos
+ * os usuarios)
+ *
+ */
+
 export {SubjectenericProfile}
 
 class SubjectenericProfile extends HTMLElement {

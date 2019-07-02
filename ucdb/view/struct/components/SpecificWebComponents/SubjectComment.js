@@ -1,7 +1,7 @@
 /**
  * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
  *
- * O modulo é uma componente-web que serve para representar uma comentario, possui um style propio,
+ * O modulo é um componente-web que serve para representar uma comentario, possui um style propio,
  * as ações do componente devem ser restritas aquelas definidas neste arquivos.
  */
 export {SubjectComment}

@@ -1,3 +1,8 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * Modulo responsavel por controlar o as ações dos botões de SubjectProfile.
+ */
+
 import {postData} from "../../../../controller/rest_controller.js";
 export {giveLike, giveDislike}
 
@@ -56,6 +61,7 @@ function giveLike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject
         alert("Algo deu errado no sistema, por favor tente outra vez mais tarde!");
     }
 }
+
 function giveDislike(subjectID, $like, $dislike, $likeCount, $dislikeCount, subject={_userEnjoyed:false, _userDisliked:false}) {
     const userToken = window.localStorage.___access_token___;
     try {
