@@ -1,5 +1,5 @@
 import {getData} from "../../../../controller/rest_controller.js";
-import {SubjectenericProfile} from "../GenericWebComponents/SubjectGenericProfile.js";
+import {SubjectenericProfile} from "../SpecificWebComponents/SubjectGenericProfile.js";
 import {loginButton} from "../../../scripts/renderButtons.js";
 
 export {ranking_features};

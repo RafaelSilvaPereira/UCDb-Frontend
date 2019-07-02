@@ -1,8 +1,8 @@
 import {isNumber} from "../../../../controller/util/util.js";
 import {getData} from "../../../../controller/rest_controller.js";
 import {loginButton} from "../../../scripts/renderButtons.js";
-import {SubjectenericProfile} from "../GenericWebComponents/SubjectGenericProfile.js";
-import {SubjectProfile} from "../GenericWebComponents/SubjectProfile.js"
+import {SubjectenericProfile} from "../SpecificWebComponents/SubjectGenericProfile.js";
+import {SubjectProfile} from "../SpecificWebComponents/SubjectProfile.js"
 export {search_subject}
 
 
