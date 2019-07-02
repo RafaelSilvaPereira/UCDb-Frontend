@@ -1,12 +1,24 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ *
+ * O modulo é um componente-web que serve para representar uma comentario, possui um style propio,
+ * as ações do componente devem ser restritas aquelas definidas neste arquivos.
+ */
 export {SubjectComment}
 import {deleteData, postData} from "../../../../controller/rest_controller.js";
 
 class SubjectComment extends HTMLElement{
-
-    constructor(subjectID=-1, subComments=[], type="comment") {
+    /**
+     * Definindo o construtor padrão de um comentario
+     * _subjectID: o identificador da disciplina
+     * _subComments: um array de sub-comentarios que um comentario pode ter, caso o comentario seja "reply" isto é resposta
+     *          ele por construção ele não vai possuir sub-comentarios.
+     * _type: o tipo de comentario, por padrão admite-se que o tipo passado seja "subject-comment" ou "reply"
+     */
+    constructor(subjectID = -1, subComments = [], type = "subject-comment") {
         super();
-        this.subjectID = subjectID;
-        this.subComments = subComments;
+        this._subjectID = subjectID;
+        this._subComments = (type === "comment-subject") ? subComments : [];
         this._type = type;
 
     }
@@ -19,7 +31,7 @@ class SubjectComment extends HTMLElement{
         this.date = this.getAttribute("commentDate");
         this.hour = this.getAttribute("commentHour");
         this._isvisible = this.getAttribute("visible");
-        this.setAttribute("id", `comment-${this.commentID}`); // para ser setado automaticamente em todas as subjects
+        this.setAttribute("id", `comment-${this.commentID}`); // definindo a string do id, exemplo: id="comment-15287"
         this.render();
     }
 
@@ -27,13 +39,16 @@ class SubjectComment extends HTMLElement{
         // language=HTML
         const html = this.getHtml();
 
-        this.innerHTML = (!!this._isvisible) ? html : "";
+        this.innerHTML = (!!this._isvisible) ? html : ""; // se o comentario tiver sua configuração definida como false ele terá um
 
-        this.insertReplysOnComment(this.subComments);
+        if (this._type === "comment-subject") {
+            this.insertReplysOnComment(this._subComments);
+        }
         this.innerJS();
 
     }
 
+    /*definindo a parte estrutural do componente*/
     getHtml() {
         const defautHTML = `
             ${this.getCss()};
@@ -63,6 +78,7 @@ class SubjectComment extends HTMLElement{
 
     }
 
+    /*Definindo a parte de estilização do componente*/
     getCss() {
         return `
             <style>
@@ -98,6 +114,7 @@ class SubjectComment extends HTMLElement{
         `;
     }
 
+    /* definindo o comportamento do componente. */
     innerJS() {
         const $deleteButtom = document.getElementById(`delete-${this.id}`);
         const $sendReply = document.getElementById(`send-reply-${this.id}`);
@@ -118,16 +135,17 @@ class SubjectComment extends HTMLElement{
         $sendReply.onclick = () => {
             const commentText = document.getElementById(`reply-${this.id}-id`).value;
             const userToken = window.localStorage.___access_token___;
-            const url = `comment/reply/${this.subjectID}/${this.commentID}`;
+            const url = `comment/reply/${this._subjectID}/${this.commentID}`;
             postData(url,{comment: commentText}, `Bearer ${userToken}`)
-            .then( r => {
-                if(!!r) {
-                    this.insertReplysOnComment([r]);
-                }
-            }).catch(err => alert(err))
+                .then(r => {
+                    if(!!r) {
+                        this.insertReplysOnComment([r]);
+                    }
+                }).catch(err => alert(err))
         }
     }
 
+    /*metodo auxiliar que define a classe que o comentario terá (sendo util para o css)*/
     chooseClass() {
         if (this._type === "comment-subject") {
             return "comment-subject"
@@ -136,6 +154,7 @@ class SubjectComment extends HTMLElement{
         }
     }
 
+    /*metodo que insere respostas a um comentario.*/
     insertReplysOnComment(subCommentsList) {
         const $subComments = document.createElement("div");
 
@@ -143,7 +162,7 @@ class SubjectComment extends HTMLElement{
         $subComments.setAttribute("id", `reply-to-subject-id-${this.commentID}`);
         subCommentsList.forEach(sc => {
 
-            let reply = new SubjectComment(this.subjectID, [], "reply");
+            let reply = new SubjectComment(this._subjectID, [], "reply");
 
             reply.setAttribute("visible", sc.visible);
             reply.setAttribute("commentID", sc.commentID);

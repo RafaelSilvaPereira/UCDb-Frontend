@@ -1,3 +1,35 @@
-* {
-    background-color: chartreuse; /*testando link para o css!!!!!!!!!!!!!!!!!*/
+
+/*Button*/
+button {
+    margin-top: 20px;
+    border: none;
+    padding: 10px 60px;
+    background-color: #ffffff;
+    color: #0a0ae6;
+}
+
+button:hover, button:active{
+    background-color:#0a0ae6 ;
+    color: #ffffff;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    align-items: center;
+    vertical-align: bottom;
+    justify-content: space-around;
+}
+p{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+select{
+    padding: 10px 40px;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
 }

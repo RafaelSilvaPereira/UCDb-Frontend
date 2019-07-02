@@ -1,12 +1,11 @@
-<!--<div id="pop-up-container-id" class="pop-up-container-c">-->
-<link rel="stylesheet" href="./view/style/ranking_button.css">
+<link href="./view/style/ranking_button.css" rel="stylesheet">
     <form  id="ranking-form">
-        <p><label for="orderType">Ordene seu ranking</label></p>
-        <select name="orderType">
+        <p><label for="orderType-id">Ordenar disciplinas por:</label></p>
+        <select id="orderType-id" name="orderTypeId">
             <option selected value="default">Padrão</option>
-            <option value="likes">Numero de Likes</option>
-            <option value="dislikes">Numero de deslikes</option>
-            <option value="comments">Numero de comentario</option>
+            <option value="likes">Número de Likes</option>
+            <option value="dislikes">Número de Deslikes</option>
+            <option value="comments">Número de Comentários</option>
             <option value="proportion">Proporção de likes/deslikes</option>
         </select>
         <button id="raquear-disciplinas" type="button">Buscar</button>

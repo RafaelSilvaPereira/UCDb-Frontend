@@ -1,7 +1,7 @@
 export {postData, getData, deleteData};
 
-const protocol = "http://";
-const domain = "localhost:8080/";
+const protocol = "https://";
+const domain = "ucdb-aplicattion.herokuapp.com/";
 const apiVersion = "api/v1/";
 const urlBody = protocol + domain + apiVersion;
 

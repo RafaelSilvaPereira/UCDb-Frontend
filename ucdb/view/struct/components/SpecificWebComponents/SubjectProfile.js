@@ -1,13 +1,21 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * Modulo é um componente-web responsavel por ser a view da disciplina para usuarios logados, possui elementos propios
+ * e contém em sim um outro elemento (comments) que por sua vez possui logica propia.
+ */
+
 import {SubjectComment} from "./SubjectComment.js";
 import {giveLike, giveDislike} from "./subject_profile_controller.js";
-// import {getData} from "../../controller/rest_controller.js";
 import {postData} from "../../../../controller/rest_controller.js";
-
-
 export {SubjectProfile};
 
 class SubjectProfile extends HTMLElement {
 
+    /**
+     * this._comments por padrão é um array vazio.
+     * this._userEnjoyed é o numero de likes que a disciplina possui
+     * this._userDisliked é o numero de deslikes que a disciplina possui
+     */
     constructor(comments = [], isEnjoyed, isDisliked) {
         super();
         this._comments = comments;
@@ -36,13 +44,15 @@ class SubjectProfile extends HTMLElement {
         const html = `
             ${this.getCss()}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <p id="subject-name">${this._name}</p>
-            <p id="subject-id">${this._id}</p>
+            <div class="disciplina-comment">
+                 <p id="subject-name">${this._name}</p>
+                 <p id="subject-id">${this._id}</p>
+            </div>
             <button id="like"><i id="ico-like" class="fa fa-thumbs-up">${this._likes}</i></button>
             <button id="dislike"><i id="ico-dislike" class="fa fa-thumbs-down dislike-class">${this._dislikes}</i></button>
             <form id="subject-comment">
                 <div id="comment-container">
-                    <textarea name="text-comment" id="comment-id" cols="120" rows="10" placeholder="conte para nós o que achou da disciplina"></textarea>
+                    <textarea name="text-comment" id="comment-id" cols="120" rows="10" placeholder="Conte para nós o que achou da disciplina."></textarea>
                     <button type="button" name="submit" id="send-comment-to-subject-${this._id}" class="send-comment-button">ENVIAR!</button>
                 </div>
             </form>
@@ -60,6 +70,37 @@ class SubjectProfile extends HTMLElement {
             .active-dislike {
                 color: indianred;
             }
+            
+            .disciplina-comment{
+            background-color: #a3a3ff;
+            margin: 20px auto;
+            padding: 20px;
+            width: auto;
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: repeat(6, 1fr);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+         #subject-name{
+            grid-column: 3/ 6;
+            align-self: center;
+        }
+        
+        #subject-id{
+            margin-left: 10px;
+            align-self: center;
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        
+        #subject-comment, #comment-container, #comment-id{
+            margin: 20px auto;
+            display: block;
+        }
+        
             </style>
         `;
         return css;

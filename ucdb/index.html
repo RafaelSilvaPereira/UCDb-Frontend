@@ -5,29 +5,30 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" href="./view/style/style-index.css">
-    <title>Document</title>
+    <title>UCDb: UFCG Cursos database</title>
 </head>
 <body>
     
     <header>
         <nav id="nav-bar">
             <div id="nav-bar-root"><!-- Aqui vai ficar o html responsavel pela nav bar do site-->
-                <ul>
+                <ul class="container">
                     <li id="home">
                         <a href="#"><img src="./view/_images/logo.png" alt="logo-site"></a>  <!-- ainda não sei como vou configurar os links, talvez seja dinamicamente usando o setAttribute-->
                     </li>
                     <li id="pesquisar-disciplina">
-                        <button search-subject class="search-subject-c" id="search-subject-id">Pesquisar Disciplina</button> <!-- isso aqui vai ser um elemento que quando clicado faz com que o main da aplicação seja trocado por um barra de pesquisa -->
+                        <button search-subject class="search-subject-c button-header" id="search-subject-id">Pesquisar Disciplina</button> <!-- isso aqui vai ser um elemento que quando clicado faz com que o main da aplicação seja trocado por um barra de pesquisa -->
                     </li>
                     <li id="cadastre-se">
-                            <button register-user class="register-button-c" id="register-button-id">Registre-se</button> <!-- Link para pagina de cadastro -->
+                            <button register-user class="register-button-c button-header" id="register-button-id">Registre-se</button> <!-- Link para pagina de cadastro -->
                     </li>
                     <li id="login">
-                        <button user-login class="login-button-c" id="login-button-id">Logar-se</button> <!-- Link para pagina de login-->
+                        <button user-login class="login-button-c button-header" id="login-button-id">Logar-se</button> <!-- Link para pagina de login-->
                     </li>
                     <li id="ranking">
-                        <button subjects-ranking class="subjects-ranking-c" id="subjects-ranking-id">Ranking</button>
+                        <button subjects-ranking class="subjects-ranking-c button-header" id="subjects-ranking-id">Ranking</button>
                     </li>
                 </ul>
             </div>
@@ -41,7 +42,7 @@
             </div>
         </main>
 
-        <div id="$subjectContent"></div>
+        <div id="$subjectContent" class="disciplinas"></div>
     </div>
     <footer>
         <!-- Aqui se terá uma foto da ufcg (que vai ser um link clickavel) e o repositorio dos criadores

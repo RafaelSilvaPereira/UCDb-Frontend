@@ -1,0 +1,1 @@
+struct é o repositorio responsavel por armazenar os view-models da pagina.
