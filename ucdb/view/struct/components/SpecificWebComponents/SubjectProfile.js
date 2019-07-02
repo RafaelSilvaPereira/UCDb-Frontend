@@ -1,13 +1,21 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * Modulo é um componente-web responsavel por ser a view da disciplina para usuarios logados, possui elementos propios
+ * e contém em sim um outro elemento (comments) que por sua vez possui logica propia.
+ */
+
 import {SubjectComment} from "./SubjectComment.js";
 import {giveLike, giveDislike} from "./subject_profile_controller.js";
-// import {getData} from "../../controller/rest_controller.js";
 import {postData} from "../../../../controller/rest_controller.js";
-
-
 export {SubjectProfile};
 
 class SubjectProfile extends HTMLElement {
 
+    /**
+     * this._comments por padrão é um array vazio.
+     * this._userEnjoyed é o numero de likes que a disciplina possui
+     * this._userDisliked é o numero de deslikes que a disciplina possui
+     */
     constructor(comments = [], isEnjoyed, isDisliked) {
         super();
         this._comments = comments;
