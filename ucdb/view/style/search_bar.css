@@ -1,3 +1,43 @@
 * {
-    background-color: aquamarine;
+    padding: 0px;
+    margin: 0px;
+}
+
+#search-bar{
+    vertical-align: top;
+}
+/*Botões*/
+#search-bar button{
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    border: none;
+    height: 50px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    color: #0a0ae6;
+    margin: 20px;
+}
+
+button:hover, button:active{
+    background-color:#0a0ae6 ;
+    color: #ffffff;
+}
+
+/*Barra de Pesquisa*/
+
+#search-bar input{
+    border: none;
+    padding: 10px 40px;
+    width: 450px;
+    height: 50px;
+    margin: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+}
+
+::-webkit-input-placeholder {
+    color: #a3a3ff;
+    font-weight: bold;
 }
