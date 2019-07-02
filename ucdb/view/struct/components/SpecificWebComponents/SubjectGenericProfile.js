@@ -1,5 +1,6 @@
 /**
  * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * @Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
  * O modulo é responsavel por ser a representação generica de uma disciplina (representação acessivel a todos
  * os usuarios)
  *

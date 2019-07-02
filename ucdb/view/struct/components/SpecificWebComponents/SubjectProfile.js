@@ -1,6 +1,7 @@
 /**
  * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
- * Modulo é um componente-web responsavel por ser a view da disciplina para usuarios logados, possui elementos propios
+ * @Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
+ *  Modulo é um componente-web responsavel por ser a view da disciplina para usuarios logados, possui elementos propios
  * e contém em sim um outro elemento (comments) que por sua vez possui logica propia.
  */
 

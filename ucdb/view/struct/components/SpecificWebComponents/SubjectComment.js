@@ -1,6 +1,6 @@
 /**
  * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
- *
+ * @Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
  * O modulo é um componente-web que serve para representar uma comentario, possui um style propio,
  * as ações do componente devem ser restritas aquelas definidas neste arquivos.
  */
@@ -91,8 +91,9 @@ class SubjectComment extends HTMLElement{
                 }
                 
                 .reply {
+                        margin-top: 10px;
                         width: 450px;
-                        background-color: rgba(255,255,255,0.2);
+                        background-color: rgba(255,255,255,0.1);
                         border-radius: 10px;; /*diferencia comentario de respostas*/
                 }
                 
