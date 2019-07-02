@@ -17,7 +17,7 @@ function createGenericSubjectsProfile(local, response) {
 
 function execRanking() {
     const form = document.getElementById("ranking-form");
-    const strategy = form.orderType.value;
+    const strategy = form.orderTypeId.value;
     const token = window.localStorage.___access_token___;
 
     getData(`subjects/sort/${strategy}`, `Bearer ${token}`)
