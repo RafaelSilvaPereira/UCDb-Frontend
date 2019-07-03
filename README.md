@@ -11,8 +11,8 @@ Link para especificação do projeto [aqui](https://docs.google.com/document/d/e
 
 ## Implementação:
 A aplicação foi desenvolvida seguindo com uma arquitetura MVVC. A organização dos pacotes é:
-![alt text] (https://drive.google.com/file/d/1v7Apq88xuRKwbPrgiewDikY_UEA1ohbT/view?usp=sharing) 
-![alt text] (https://drive.google.com/file/d/1R7QyZNuEAIgxPqt6n3q6RlDdC64UcaAl/view?usp=sharing)
+![alt text](https://drive.google.com/file/d/1v7Apq88xuRKwbPrgiewDikY_UEA1ohbT/view?usp=sharing) 
+![alt text](https://drive.google.com/file/d/1R7QyZNuEAIgxPqt6n3q6RlDdC64UcaAl/view?usp=sharing)
 
 A organização dos modulos é:
 ![alt text](https://drive.google.com/file/d/13_Rx52zII-RsmHOD0xFVXWDJqje4LNdp/view?usp=sharing)
