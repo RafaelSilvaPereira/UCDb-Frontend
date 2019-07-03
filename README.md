@@ -1,4 +1,4 @@
-# UCDb-Backend
+# UCDb-Frontend
 Projeto final da disciplina de Projeto de Software.
 * Aplicação: http://kirk.lcc.ufcg.edu.br/~rafaelsp/
 * Backend do projeto: https://github.com/RafaelSilvaPereira/UCDb-Backend
