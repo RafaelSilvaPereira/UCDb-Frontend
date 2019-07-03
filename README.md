@@ -9,6 +9,9 @@ Classificações e reviews de cursos da UFCG. O objetivo é organizar uma plataf
 ## Especificação:
 Link para especificação do projeto [aqui](https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub).
 
+## Demonstração:
+Link para o vídeo de demonstração da aplicação [aqui](https://www.youtube.com/watch?v=VhLkPkkrfNM).
+
 ## Implementação:
 A aplicação foi desenvolvida seguindo com uma arquitetura MVVC, utilizando Javascript puro, css3 e html5 apenas.
 A organização dos pacotes é:
