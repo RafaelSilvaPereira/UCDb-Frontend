@@ -10,12 +10,12 @@ Classificações e reviews de cursos da UFCG. O objetivo é organizar uma plataf
 Link para especificação do projeto [aqui](https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub).
 
 ## Implementação:
-A aplicação foi desenvolvida seguindo com uma arquitetura MVVC. A organização dos pacotes é:
-![Org1](https://drive.google.com/file/d/1v7Apq88xuRKwbPrgiewDikY_UEA1ohbT/view?usp=sharing).
-![Org2](https://drive.google.com/file/d/1R7QyZNuEAIgxPqt6n3q6RlDdC64UcaAl/view?usp=sharing).
+A aplicação foi desenvolvida seguindo com uma arquitetura MVVC, utilizando Javascript puro, css3 e html5 apenas.
+A organização dos pacotes é:
+Divisão externa: https://drive.google.com/file/d/1v7Apq88xuRKwbPrgiewDikY_UEA1ohbT/view?usp=sharing
+Divisão dos componentes da view: https://drive.google.com/file/d/1R7QyZNuEAIgxPqt6n3q6RlDdC64UcaAl/view?usp=sharing
 
-A organização dos modulos é:
-![Pacotes](https://drive.google.com/file/d/13_Rx52zII-RsmHOD0xFVXWDJqje4LNdp/view?usp=sharing).
+A organização dos modulos encontrada em: https://drive.google.com/file/d/13_Rx52zII-RsmHOD0xFVXWDJqje4LNdp/view?usp=sharing
 
 ## Documentação Swagger:
 Link para a documentação Swagger da API [aqui](https://ucdb-aplicattion.herokuapp.com/api/swagger-ui.html).
