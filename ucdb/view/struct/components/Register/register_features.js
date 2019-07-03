@@ -1,5 +1,6 @@
 /**
  * @author Marcelo Andrade - 117110910 / CC@UFCG
+ * Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
  */
 
 
@@ -20,6 +21,7 @@ function register_features(applicationHeader) {
     };
 
     applicationHeader._form.submit.onclick = () => {
+        window.localStorage.clear(); // evitando possiveis bug's com com varios usuarios na mesma maquina.
         let form = applicationHeader._form;
         let valid = true;
 
