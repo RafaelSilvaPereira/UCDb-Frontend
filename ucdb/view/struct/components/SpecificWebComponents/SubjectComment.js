@@ -176,17 +176,20 @@ class SubjectComment extends HTMLElement{
                     }
                 }).catch(err => alert("lamentamos muito mas... algo deu errado nos nossos servidores :( . Por favor tente novamente mais tarde "))
         };
-
-        $sendReply.onclick = () => {
-            const commentText = document.getElementById(`reply-${this.id}-id`).value;
-            const userToken = window.localStorage.___access_token___;
-            const url = `comment/reply/${this._subjectID}/${this.commentID}`;
-            postData(url,{comment: commentText}, `Bearer ${userToken}`)
-                .then(r => {
-                    if(!!r) {
-                        this.insertReplysOnComment([r]);
-                    }
-                }).catch(err => alert(err))
+        try {
+            $sendReply.onclick = () => {
+                const commentText = document.getElementById(`reply-${this.id}-id`).value;
+                const userToken = window.localStorage.___access_token___;
+                const url = `comment/reply/${this._subjectID}/${this.commentID}`;
+                postData(url, {comment: commentText}, `Bearer ${userToken}`)
+                    .then(r => {
+                        if (!!r) {
+                            this.insertReplysOnComment([r]);
+                        }
+                    }).catch(err => alert(err))
+            }
+        } catch (e) {
+            // não imprimindo erro no console.
         }
     }
 
