@@ -8,7 +8,8 @@
 
 import {SubjectComment} from "./SubjectComment.js";
 import {postData} from "../../../../controller/rest_controller.js";
-import {giveLike, giveDislike} from "./subject_profile_controller.js";
+import {giveDislike, giveLike} from "./subject_profile_controller.js";
+
 export {SubjectProfile};
 
 class SubjectProfile extends HTMLElement {
@@ -37,22 +38,23 @@ class SubjectProfile extends HTMLElement {
         const html = this.getHtml();
 
         this.innerHTML = html;
+        let flag = document.createElement("div");
+        flag.setAttribute("id", "comments-flag");
+        console.log(flag);
+        this.appendChild(flag);
         this.setLikeAndDislikeButtonState();
         this.autoConfigureSubjectComments(this._comments);
         this.innerJS();
     }
 
     autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lista de comentários :( sdd's tipagem estatica agr
-        let $subjectsComments = document.getElementById("subjectCommentsID");
 
-        $subjectsComments = document.createElement("div");
+        let $subjectsComments = document.createElement("div");
         $subjectsComments.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
         $subjectsComments.setAttribute("id", "subjectCommentsID");
-
-        // $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
+        let a = document.getElementById("subjectCommentsID");
         commentsList.forEach(c => {
             let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
-
 
             comment.setAttribute("visible", c.visible);
             comment.setAttribute("commentID", c.commentID);
@@ -63,11 +65,12 @@ class SubjectProfile extends HTMLElement {
             comment.setAttribute("commentDate", c.commentDate);
             comment.setAttribute("commentHour", c.commentHour);
             comment.setAttribute("visible", c.visible);
-            $subjectsComments.appendChild(comment);
 
+            $subjectsComments.appendChild(comment);
         });
 
-        this.appendChild($subjectsComments);
+        this.appendChild($subjectsComments)
+
     };
 
     getHtml() {
@@ -86,7 +89,7 @@ class SubjectProfile extends HTMLElement {
                         <textarea name="text-comment" id="comment-id" cols="120" rows="10" placeholder="Conte para nós o que achou da disciplina."></textarea>
                         <button type="button" name="submit" id="send-comment-to-subject-${this._id}" class="send-comment-button">ENVIAR!</button>
                     </div>
-                </form>
+                </form>            
             </div>
             `;
         return html;
@@ -212,7 +215,8 @@ class SubjectProfile extends HTMLElement {
                 postData("comment/create/" + this._id, {comment: commentText.trim()},
                     `Bearer ${userToken}`).then(newC => {
                     if (!!newC) {
-                        this.autoConfigureSubjectComments([newC]);
+                        this.insertNewComment(newC);
+
                     }
                 }).catch(err => alert("algo deu errado"));
             } else {
@@ -233,6 +237,24 @@ class SubjectProfile extends HTMLElement {
     };
 
 
+    insertNewComment(newC) {
+        let comment = new SubjectComment(this.id, newC.subcomments, "comment-subject"); // criando um novo comentario
+
+        comment.setAttribute("visible", newC.visible);
+        comment.setAttribute("commentID", newC.commentID);
+        comment.setAttribute("id", `subject-${newC.commentID}`);
+        comment.setAttribute("studentName", newC.studentName);
+        comment.setAttribute("studentSecondName", newC.studentSecondName);
+        comment.setAttribute("comment", newC.comment);
+        comment.setAttribute("commentDate", newC.commentDate);
+        comment.setAttribute("commentHour", newC.commentHour);
+        comment.setAttribute("visible", newC.visible);
+
+
+        const local = document.getElementById("subjectCommentsID");
+        local.firstElementChild.insertAdjacentElement('afterbegin', comment);
+
+    }
 }
 
 window.customElements.define("subject-profile", SubjectProfile);
