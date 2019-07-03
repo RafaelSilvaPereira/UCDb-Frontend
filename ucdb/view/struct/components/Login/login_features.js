@@ -17,21 +17,22 @@ function loginFeatures(local,applicationHeader) {
     };
 
     applicationHeader._form.submit.onclick = () => {
+        window.localStorage.clear();
         const requestUser = {
-            email: applicationHeader._form.email.value,
-            password: applicationHeader._form.psw.value
+            email: applicationHeader._form.email.value.trim(),
+            password: applicationHeader._form.psw.value.trim()
         };
         let valid = true;
-        if (requestUser.email === "") {
+        if (requestUser.email.trim() === "") {
             valid = false;
             alert("Email não valido");
         } else if (!requestUser.email.includes("@")) {
             valid = false;
             alert("Email não valido");
-        } else if (requestUser.password === "") {
+        } else if (requestUser.password.trim() === "") {
             valid = false;
             alert("Sua senha deve pelo menos 8 caracteres");
-        } else if (requestUser.password.length < 8) {
+        } else if (requestUser.password.trim().length < 8) {
             valid = false;
             alert("Sua senha deve pelo menos 8 caracteres");
         }
@@ -52,7 +53,7 @@ function loginFeatures(local,applicationHeader) {
                     }, 1000 * 60 * 60); // recriando o token
 
                     applicationHeader._closeButton.click();
-                }).catch(() => alert("Não foi possivel fazer o login, por favor tarde"));
+                }).catch(() => alert("Não foi possivel fazer o login, provavelmente este login não existe"));
         }
     }
 }

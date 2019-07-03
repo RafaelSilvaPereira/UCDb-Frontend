@@ -1,11 +1,17 @@
 /**
- *@Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
-*/
-    export {postData, getData, deleteData};
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * @Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
+ *
+ * O modulo é responsavel por fazer a conexão com o servidor através de metodos definidos no http.
+ */
 
-const protocol = "http://";
-const domain = "localhost:8080/";
+
+export {postData, getData, deleteData};
+
+const protocol = "https://";
+const domain = "ucdb-aplicattion.herokuapp.com/";
 const apiVersion = "api/v1/";
+
 const urlBody = protocol + domain + apiVersion;
 
 function initDefine(data, authorization, method) {
@@ -76,11 +82,10 @@ function postData(path, data = {}, authorization) {
                     try {
                         return  response.json();
                     } catch (e) {
-                        alert("Algo de errado aconteceu, por favor tente novamente mais tarde.")
                     }
                 }
             }
-        ).catch(err => alert("Algo de errado aconteceu, não conseguimos contatar nosso servidor por favor tente mais tarde"));
+        ).catch(err => err);
 }
 
 function putData(path, data = {}, authorization) {
@@ -94,7 +99,7 @@ function putData(path, data = {}, authorization) {
                     }
                 }
             }
-        ).catch(err => alert("Algo de errado aconteceu, não conseguimos contatar nosso servidor por favor tente mais tarde"));
+        ).catch(err => err);
 }
 
 function getData(path,  authorization) {

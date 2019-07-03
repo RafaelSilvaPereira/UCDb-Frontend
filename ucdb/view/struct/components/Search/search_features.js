@@ -1,3 +1,8 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * Modulo responsavel por controlar as opções de busca, bem como retornar os resultados das opções de busca.
+ */
+
 import {isNumber} from "../../../../controller/util/util.js";
 import {getData} from "../../../../controller/rest_controller.js";
 import {loginButton} from "../../../scripts/renderButtons.js";
@@ -25,7 +30,7 @@ function createASubjectProfile(response, isEnjoyed, isDisliked) {
 function execSearchById(local, applicationHeader, applicationMain) {
     const accessToken = window.localStorage.___access_token___;
     if((!accessToken)){
-        alert("sem token");
+        alert("A sessão do usuario, não foi iniciada, por favor refaça o login.");
         loginButton(local, applicationHeader);
     } else {
         let searchBarValue = applicationMain._form.searchBar.value;

@@ -51,7 +51,7 @@ class SubjectComment extends HTMLElement{
     /*definindo a parte estrutural do componente*/
     getHtml() {
         const defautHTML = `
-            ${this.getCss()};
+            ${this.getCss()}
             <div class="${this.chooseClass()}">
             <div>
                 <div class="comment-info-class">
@@ -73,7 +73,7 @@ class SubjectComment extends HTMLElement{
                     </div>
                 </form>
             </div>
-        `;
+        `
         } else {
             return  defautHTML + "</div>"
         }

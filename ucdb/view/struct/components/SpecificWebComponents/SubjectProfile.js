@@ -5,9 +5,10 @@
  * e contém em sim um outro elemento (comments) que por sua vez possui logica propia.
  */
 
+
 import {SubjectComment} from "./SubjectComment.js";
-import {giveLike, giveDislike} from "./subject_profile_controller.js";
 import {postData} from "../../../../controller/rest_controller.js";
+import {giveLike, giveDislike} from "./subject_profile_controller.js";
 export {SubjectProfile};
 
 class SubjectProfile extends HTMLElement {
@@ -40,6 +41,34 @@ class SubjectProfile extends HTMLElement {
         this.autoConfigureSubjectComments(this._comments);
         this.innerJS();
     }
+
+    autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lista de comentários :( sdd's tipagem estatica agr
+        let $subjectsComments = document.getElementById("subjectCommentsID");
+
+        $subjectsComments = document.createElement("div");
+        $subjectsComments.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
+        $subjectsComments.setAttribute("id", "subjectCommentsID");
+
+        // $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
+        commentsList.forEach(c => {
+            let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
+
+
+            comment.setAttribute("visible", c.visible);
+            comment.setAttribute("commentID", c.commentID);
+            comment.setAttribute("id", `subject-${c.commentID}`);
+            comment.setAttribute("studentName", c.studentName);
+            comment.setAttribute("studentSecondName", c.studentSecondName);
+            comment.setAttribute("comment", c.comment);
+            comment.setAttribute("commentDate", c.commentDate);
+            comment.setAttribute("commentHour", c.commentHour);
+            comment.setAttribute("visible", c.visible);
+            $subjectsComments.appendChild(comment);
+
+        });
+
+        this.appendChild($subjectsComments);
+    };
 
     getHtml() {
         const html = `
@@ -158,6 +187,7 @@ class SubjectProfile extends HTMLElement {
         const $like = document.getElementById("like");
         const $dislike = document.getElementById("dislike");
         const $sendComment = document.getElementById(`send-comment-to-subject-${this._id}`);
+
         let $likeCount = $like.firstElementChild;
         let $dislikeCount = $dislike.firstElementChild;
 
@@ -170,45 +200,27 @@ class SubjectProfile extends HTMLElement {
             giveDislike(this._id, $like, $dislike, $likeCount, $dislikeCount, this);
         };
 
+        /* esse metodo gerou uma discussão quanto ao design, mas chegamos a conclusão que o metodo de comentar (OU SEJA CRIAR COMENTARIO)
+        * deve ser do modulo e não do controller do modulo, isto por que esse componente "Comment" atua como uma propriedade
+        * de Subject, sendo assim a descrição do comportamento da função também deveria estar aqui
+        *
+        */
         $sendComment.onclick = () => {
             const commentText = document.getElementById("comment-id").value;
-            const userToken = window.localStorage.___access_token___;
-            postData("comment/create/" + this._id, {comment: commentText.trim()},
-                `Bearer ${userToken}`).then(newC => {
-                if (!!newC) {
-                    this.autoConfigureSubjectComments([newC]);
-                }
-            }).catch(err => alert("algo deu errado"));
+            if ("" !== commentText.trim()) {
+                const userToken = window.localStorage.___access_token___;
+                postData("comment/create/" + this._id, {comment: commentText.trim()},
+                    `Bearer ${userToken}`).then(newC => {
+                    if (!!newC) {
+                        this.autoConfigureSubjectComments([newC]);
+                    }
+                }).catch(err => alert("algo deu errado"));
+            } else {
+                alert("Erro, não é possivel inserir um comentario com texto vazio.")
+            }
         };
     }
 
-    autoConfigureSubjectComments(commentsList) { // nota commentList deve ser um lista de comentários :( sdd's tipagem estatica agr
-        let $subjectsComments = document.getElementById("subjectCommentsID");
-
-        $subjectsComments = document.createElement("div");
-        $subjectsComments.setAttribute("class", "subjectComments"); // configurar a classe para que ele tenha um tipo definido
-        $subjectsComments.setAttribute("id", "subjectCommentsID");
-
-        // $subjectsComments.innerHTML = ""; // limpando o que quer que esteja dentro do html
-        commentsList.forEach(c => {
-            let comment = new SubjectComment(this.id, c.subcomments, "comment-subject"); // criando um novo comentario
-
-
-            comment.setAttribute("visible", c.visible);
-            comment.setAttribute("commentID", c.commentID);
-            comment.setAttribute("id", `subject-${c.commentID}`);
-            comment.setAttribute("studentName", c.studentName);
-            comment.setAttribute("studentSecondName", c.studentSecondName);
-            comment.setAttribute("comment", c.comment);
-            comment.setAttribute("commentDate", c.commentDate);
-            comment.setAttribute("commentHour", c.commentHour);
-            comment.setAttribute("visible", c.visible);
-            $subjectsComments.appendChild(comment);
-
-        });
-
-        this.appendChild($subjectsComments);
-    };
 
     setLikeAndDislikeButtonState() {
         if (this._userEnjoyed) {

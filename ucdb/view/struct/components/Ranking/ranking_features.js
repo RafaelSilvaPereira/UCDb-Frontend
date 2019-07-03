@@ -1,3 +1,8 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * Modulo responsavel por controlar o botão de ranking.
+ */
+
 import {getData} from "../../../../controller/rest_controller.js";
 import {SubjectenericProfile} from "../SpecificWebComponents/SubjectGenericProfile.js";
 import {loginButton} from "../../../scripts/renderButtons.js";
