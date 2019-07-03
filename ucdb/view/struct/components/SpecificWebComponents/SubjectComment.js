@@ -161,20 +161,26 @@ class SubjectComment extends HTMLElement{
 
     /* definindo o comportamento do componente. */
     innerJS() {
+        /* Apesar de conseguir fazer um usuario apagar da view da sua sessão um comentario indesejado
+        *  Eu não consegui manter todas as sessões do usuario com os mesmos comentarios apagados para a view dele
+        * isto é não consegui controlar que uma vez que o usuario apague
+        */
         const $deleteButtom = document.getElementById(`delete-${this.id}`);
         const $sendReply = document.getElementById(`send-reply-${this.id}`);
 
         $deleteButtom.onclick = () => {
             const token = window.localStorage.___access_token___;
-            deleteData(`comment/${this.commentID}`, {}, `Bearer ${token}`)
-                .then(r => {
-                    if (r===true) {
-                        this.setAttribute("visible",false);
-                        this.innerHTML = "";
-                    }else {
-                        alert("Token invalido :( , por favor refaça seu login!! ")
-                    }
-                }).catch(err => alert("lamentamos muito mas... algo deu errado nos nossos servidores :( . Por favor tente novamente mais tarde "))
+            if (!!token) {
+                deleteData(`comment/${this.commentID}`, {}, `Bearer ${token}`)
+                    .then(r => {
+                        if (r === true) {
+                            this.setAttribute("visible", false);
+                            this.innerHTML = ""; /* apaga o conteudo do comentario */
+                        } else {
+                            alert("Token invalido :( , por favor refaça seu login!! ")
+                        }
+                    }).catch(err => alert("lamentamos muito mas... algo deu errado nos nossos servidores :( . Por favor tente novamente mais tarde "))
+            }
         };
         try {
             $sendReply.onclick = () => {
