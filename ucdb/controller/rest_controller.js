@@ -1,8 +1,17 @@
+/**
+ * @Author: Rafael da Silva Pereira Matricula: 117110921. UFCG: Ciência da Computação.
+ * @Author: Áthila Matheus Barros Borges Matricula: 118210206. UFCG: Ciência da Computação.
+ *
+ * O modulo é responsavel por fazer a conexão com o servidor através de metodos definidos no http.
+ */
+
+
 export {postData, getData, deleteData};
 
-const protocol = "http://";
-const domain = "localhost:8080/";
+const protocol = "https://";
+const domain = "ucdb-aplicattion.herokuapp.com/";
 const apiVersion = "api/v1/";
+
 const urlBody = protocol + domain + apiVersion;
 
 function initDefine(data, authorization, method) {
@@ -67,31 +76,49 @@ function deleteData(path, data = {}, authorization) {
 }
 
 function postData(path, data = {}, authorization) {
-      return   fetch(urlBody + encodeURI(path), initDefine(data, authorization, "POST"))
-          .then(response => {
-              if(!!response && response.ok) {
-                  try {
-                      return  response.json();
-                  } catch (e) {
-                      alert("O banco de dados não respondeu essa requisição, por favor tente novamente mais tarde.")
-                  }
-              }
-          }
-          ).catch(err => err); // esconendo de mim meus propios erros!!!
-}
-
-
-function getData(path,  authorization) {
-    return fetch(urlBody + encodeURI(path), initDefine(null,authorization,"GET"))
+    return   fetch(urlBody + encodeURI(path), initDefine(data, authorization, "POST"))
         .then(response => {
                 if(!!response && response.ok) {
                     try {
                         return  response.json();
                     } catch (e) {
-                    alert("Não foi possivel recuperar esse dado, por favor tente mais tarde")
                     }
                 }
             }
         ).catch(err => err);
+}
+
+function putData(path, data = {}, authorization) {
+    return fetch(urlBody + encodeURI(path), initDefine(data, authorization, "PUT"))
+        .then(response => {
+                if (!!response && response.ok) {
+                    try {
+                        return response.json();
+                    } catch (e) {
+                        alert("Algo de errado aconteceu, por favor tente novamente mais tarde.")
+                    }
+                }
+            }
+        ).catch(err => err);
+}
+
+function getData(path,  authorization) {
+    return fetch(urlBody + encodeURI(path), initDefine(null, authorization,"GET"))
+        .then(response => {
+                if(!!response && response.ok) {
+                    try {
+                        return  response.json();
+                    } catch (e) {
+                        alert("Não foi possivel recuperar esse dado, por favor tente mais tarde")
+                    }
+                }
+            }
+        ).catch(err => alert("Algo de errado aconteceu, não conseguimos contatar nosso servidor por favor tente mais tarde"));
+}
+
+/* apenas para completar os metodos basicos de HTTP*/
+function headData(path, authorization, callback) {
+    return fetch(urlBody + encodeURI(path), initDefine(null, authorization, "HEAD"))
+        .then(response => callback(response.status !== 404));
 }
 
